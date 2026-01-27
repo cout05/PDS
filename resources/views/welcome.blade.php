@@ -20,7 +20,7 @@
         step: 1, 
         maxStep: 14,
         showPreview: false,
-        surname:     '', first_name: '', middle_name: '', name_extension: '', date_of_birth: '', place_of_birth: '', sex: '', civil_status: '', citizenship: '', height_m: '', weight_kg: '', blood_type: '', umid_no: '', pagibig_no: '', philhealth_no: '', psn: '', tin_no: '', agency_employee_no: '', telephone_no: '', mobile_no: '', email: '',
+        surname:     '', first_name: '', middle_name: '', name_extension: '', date_of_birth: '', place_of_birth: '', sex: 'Male', civil_status: 'Single', citizenship: 'Filipino', height_m: '', weight_kg: '', blood_type: '', umid_no: '', pagibig_no: '', philhealth_no: '', psn: '', tin_no: '', agency_employee_no: '', telephone_no: '', mobile_no: '', email: '', photo: '',
         residential_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         permanent_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         spouse: {surname: '', first_name: '', middle_name: '', name_extension: '', occupation: '', employer: '', business_address: '', telephone_no: ''},
@@ -52,9 +52,9 @@
         removeCivilService(index) { this.civilService.splice(index, 1) },
         civilService: [{eligibility_type: '', rating: '', exam_date: '', exam_place: '', license_no: '', valid_from: '', valid_to: ''}],
 
-        addWork() { this.workExperience.push({date_from: '', date_to: '', position_title: '', agency: '', appointment_status: '', gov_service: ''}) },
+        addWork() { this.workExperience.push({date_from: '', date_to: '', position_title: '', agency: '', appointment_status: '', gov_service: 'N'}) },
         removeWork(index) { this.workExperience.splice(index, 1) },
-        workExperience: [{date_from: '', date_to: '', position_title: '', agency: '', appointment_status: '', gov_service: ''}],
+        workExperience: [{date_from: '', date_to: '', position_title: '', agency: '', appointment_status: '', gov_service: 'N'}],
 
         addVoluntary() { this.voluntaryWork.push({organization: '', date_from: '', date_to: '', hours: '', position: ''}) },
         removeVoluntary(index) { this.voluntaryWork.splice(index, 1) },
@@ -77,7 +77,15 @@
         getLearn(index) { return this.learning[index] || {} },
         getRef(index) { return this.references[index] || {} },
         formatDate(date) { return date ? new Date(date).toLocaleDateString() : '' },
-        formatDateRange(from, to) { return (from || '') + (to ? ' to ' + to : '') } 
+        formatDateRange(from, to) { return (from || '') + (to ? ' to ' + to : '') },
+        handlePhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => { this.photo = e.target.result; };
+                reader.readAsDataURL(file);
+            }
+        }
     }" x-cloak>
 
         <!-- Header -->
@@ -469,8 +477,9 @@
                      <!-- Step 14: Government ID -->
                     <div x-show="step === 14" class="space-y-6">
                         <h2 class="text-xl font-semibold border-b pb-2">XIV. Government ID</h2>
-                        <div class="grid grid-cols-1 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div><label class="block text-sm font-medium">Government Issued ID</label><input type="text" name="government_id[id_type]" x-model="government_id.id_type" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm" placeholder="e.g. Passport, GSIS, SSS, LTO"></div>
+                            <div><label class="block text-sm font-medium">Passport Size Photo</label><input type="file" @change="handlePhoto" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
                             <div><label class="block text-sm font-medium">ID/License No.</label><input type="text" name="government_id[id_number]" x-model="government_id.id_number" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></div>
                             <div><label class="block text-sm font-medium">Date/Place of Issuance</label><input type="text" name="government_id[place_issued]" x-model="government_id.place_issued" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></div>
                         </div>

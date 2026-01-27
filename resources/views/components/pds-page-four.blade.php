@@ -120,8 +120,15 @@
             <th>NAME</th>
             <th>OFFICE / RESIDENTIAL ADDRESS</th>
             <th>CONTACT NO. AND/OR EMAIL</th>
-            <td rowspan="4" style="border: none;">
-                <div class="passport">Passport-sized unfiltered digital picture taken within the last 6 months 4.5 cm. X 3.5 cm</div>
+            <td rowspan="4" style="border: 1px solid black; width: 3.5cm; height: 4.5cm; padding: 0;">
+                <div class="passport" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <template x-if="photo">
+                        <img :src="photo" style="width: 100%; height: 100%; object-fit: cover;">
+                    </template>
+                    <template x-if="!photo">
+                        <div style="padding: 10px; text-align: center; font-size: 8px;">Passport-sized unfiltered digital picture taken within the last 6 months 4.5 cm. X 3.5 cm</div>
+                    </template>
+                </div>
             </td>
         </tr>
         <tr>
