@@ -10,9 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('personal_information', function (Blueprint $table) {
-            $table->longText('photo')->nullable();
-        });
+        if (!Schema::hasColumn('personal_information', 'photo')) {
+            Schema::table('personal_information', function (Blueprint $table) {
+                $table->longText('photo')->nullable();
+            });
+        }
     }
 
     /**

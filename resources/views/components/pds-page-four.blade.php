@@ -5,34 +5,34 @@
         </tr>
         <tr>
             <th colspan="2" style="border-top: none; border-bottom: none;">a. within the third degree?</th>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34')?.answer === 'No'" onclick="return false;">NO</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34a')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34a')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
             <th colspan="2" rowspan="2" style="border-top: none; border-bottom: none;">b. within the fourth degree (for Local Government Unit - Career Employees)?</th>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34')?.answer === 'No'" onclick="return false;">NO</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34b')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '34b')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none;">if YES, give details: <br><input type="text" class="input-text"></td>
+            <td colspan="2" style="border-top: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '34b')?.details" readonly></td>
         </tr>
 
 
         <tr>
             <th colspan="2" rowspan="2" style="border-bottom: none;">35. a. Have you ever been found guilty of any administrative offense?</th>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '35')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '35')?.answer === 'No'" onclick="return false;">NO</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '35a')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '35a')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '35')?.details" readonly></td>
+            <td colspan="2" style="border: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '35a')?.details" readonly></td>
         </tr>
         <tr>
             <th colspan="2" rowspan="2" style="border-top: none; border-bottom: none;">b. Have you been criminally charged before any court?</th>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '36')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '36')?.answer === 'No'" onclick="return false;">NO</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '35b')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '35b')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none;">if YES, give details: <br>Date Filed: <input type="text" class="input-text" style="width: fit-content;" :value="declarations.find(d => d.question_no == '36')?.details" readonly> <br>Status of Case/s: <input type="text" class="input-text" style="width: fit-content;"></td>
+            <td colspan="2" style="border-top: none;">if YES, give details: <br>Date Filed: <input type="text" class="input-text" style="width: fit-content;" :value="declarations.find(d => d.question_no == '35b')?.details" readonly> <br>Status of Case/s: <input type="text" class="input-text" style="width: fit-content;" :value="declarations.find(d => d.question_no == '35b')?.status" readonly></td>
         </tr>
 
         <tr>
@@ -55,20 +55,20 @@
 
 
         <tr>
-            <th colspan="2" rowspan="2" style="width: 70%; border-bottom: none;">38. a. Have you ever been a candidate in a national or local election held within the last year (except Taranga election)?</th>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38')?.answer === 'No'" onclick="return false;">NO</td>
+            <th colspan="2" rowspan="2" style="width: 70%; border-bottom: none;">38. a. Have you ever been a candidate in a national or local election held within the last year (except Barangay election)?</th>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38a')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38a')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none; border-bottom: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '38')?.details" readonly></td>
+            <td colspan="2" style="border-top: none; border-bottom: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '38a')?.details" readonly></td>
         </tr>
         <tr>
             <th colspan="2" rowspan="2" style="border-top: none; border-bottom: none;">b. Have you resigned from the government service during the three (3)-month period before the last election to promote/actively campaign for a national or local candidate?</th>
-             <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38')?.answer === 'No'" onclick="return false;">NO</td>
+             <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38b')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '38b')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none;">if YES, give details: <br><input type="text" class="input-text"></td>
+            <td colspan="2" style="border-top: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '38b')?.details" readonly></td>
         </tr>
 
 
@@ -87,27 +87,27 @@
         </tr>
         <tr>
             <th colspan="2" rowspan="2" style="border-top: none; border-bottom: none;">a. Are you a member of any indigenous group?</th>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40')?.answer === 'No'" onclick="return false;">NO</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40a')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40a')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none; border-bottom: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '40')?.details" readonly></td>
+            <td colspan="2" style="border-top: none; border-bottom: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '40a')?.details" readonly></td>
         </tr>
         <tr>
             <th colspan="2" rowspan="2" style="border-top: none; border-bottom: none;">b. Are you a person with disability?</th>
-             <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40')?.answer === 'No'" onclick="return false;">NO</td>
+             <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40b')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40b')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none; border-bottom: none;">if YES, give details: <br><input type="text" class="input-text"></td>
+            <td colspan="2" style="border-top: none; border-bottom: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '40b')?.details" readonly></td>
         </tr>
         <tr>
             <th colspan="2" rowspan="2" style="border-top: none; border-bottom: none;">c. Are you a solo parent?</th>
-             <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40')?.answer === 'Yes'" onclick="return false;">YES</td>
-            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40')?.answer === 'No'" onclick="return false;">NO</td>
+             <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40c')?.answer === 'Yes'" onclick="return false;">YES</td>
+            <td style="border: none;"><input type="checkbox" :checked="declarations.find(d => d.question_no == '40c')?.answer === 'No'" onclick="return false;">NO</td>
         </tr>
         <tr>
-            <td colspan="2" style="border-top: none;">if YES, give details: <br><input type="text" class="input-text"></td>
+            <td colspan="2" style="border-top: none;">if YES, give details: <br><input type="text" class="input-text" :value="declarations.find(d => d.question_no == '40c')?.details" readonly></td>
         </tr>
     </table>
 

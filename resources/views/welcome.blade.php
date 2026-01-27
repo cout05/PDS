@@ -29,13 +29,18 @@
         other_info: {skills: '', recognitions: '', memberships: ''},
         government_id: {id_type: '', id_number: '', place_issued: ''},
         declarations: [
-            {question_no: '34', answer: '', details: ''}, 
-            {question_no: '35', answer: '', details: ''}, 
+            {question_no: '34a', answer: '', details: ''}, 
+            {question_no: '34b', answer: '', details: ''}, 
+            {question_no: '35a', answer: '', details: ''}, 
+            {question_no: '35b', answer: '', details: ''}, 
             {question_no: '36', answer: '', details: ''},
             {question_no: '37', answer: '', details: ''},
-            {question_no: '38', answer: '', details: ''},
+            {question_no: '38a', answer: '', details: ''},
+            {question_no: '38b', answer: '', details: ''},
             {question_no: '39', answer: '', details: ''},
-            {question_no: '40', answer: '', details: ''}
+            {question_no: '40a', answer: '', details: ''},
+            {question_no: '40b', answer: '', details: ''},
+            {question_no: '40c', answer: '', details: ''}
         ],
         next() { if (this.step < this.maxStep) this.step++ },
         prev() { if (this.step > 1) this.step-- },
@@ -85,6 +90,66 @@
                 reader.onload = (e) => { this.photo = e.target.result; };
                 reader.readAsDataURL(file);
             }
+        },
+        fillMockData() {
+            this.surname = 'DELA CRUZ';
+            this.first_name = 'JUAN';
+            this.middle_name = 'PINEDA';
+            this.name_extension = 'JR';
+            this.date_of_birth = '1990-01-01';
+            this.place_of_birth = 'MANILA';
+            this.sex = 'Male';
+            this.civil_status = 'Married';
+            this.citizenship = 'Filipino';
+            this.height_m = '1.75';
+            this.weight_kg = '70';
+            this.blood_type = 'O+';
+            this.umid_no = '12-3456789-0';
+            this.pagibig_no = '1234-5678-9012';
+            this.philhealth_no = '12-345678901-2';
+            this.psn = '123-456-789';
+            this.tin_no = '123-456-789-000';
+            this.agency_employee_no = 'EMP-001';
+            this.telephone_no = '123-4567';
+            this.mobile_no = '0912-345-6789';
+            this.email = 'juan.delacruz@example.com';
+            
+            this.residential_address = {house_no: '123', street: 'MAYSILO', subdivision: 'VERVILLE', barangay: 'PLAINVIEW', city: 'MANDALUYONG', province: 'METRO MANILA', zipcode: '1550'};
+            this.permanent_address = {house_no: '123', street: 'MAYSILO', subdivision: 'VERVILLE', barangay: 'PLAINVIEW', city: 'MANDALUYONG', province: 'METRO MANILA', zipcode: '1550'};
+            
+            this.spouse = {surname: 'DELA CRUZ', first_name: 'MARIA', middle_name: 'SANTOS', name_extension: '', occupation: 'TEACHER', employer: 'DEPED', business_address: 'MANILA', telephone_no: '765-4321'};
+            this.father = {surname: 'DELA CRUZ', first_name: 'PEDRO', middle_name: 'PINEDA'};
+            this.mother = {surname: 'PINEDA', first_name: 'ANA', middle_name: 'REYES'};
+            
+            this.children = [{full_name: 'JUAN DELA CRUZ II', date_of_birth: '2015-05-15'}];
+            
+            this.education = [
+                {level: 'Elementary', school_name: 'MANILA ELEMENTARY', degree_course: 'PRIMARY', from_year: '1996', to_year: '2002', highest_level: 'GRADUATED', year_graduated: '2002', honors: 'NONE'},
+                {level: 'College', school_name: 'UP MANILA', degree_course: 'BS COMPUTER SCIENCE', from_year: '2006', to_year: '2010', highest_level: 'GRADUATED', year_graduated: '2010', honors: 'CUM LAUDE'}
+            ];
+            
+            this.civilService = [{eligibility_type: 'PROFESSIONAL', rating: '85.5', exam_date: '2011-03-15', exam_place: 'MANILA', license_no: '123456', valid_from: '', valid_to: '2026-03-15'}];
+            
+            this.workExperience = [{date_from: '2010-06-01', date_to: '2023-12-31', position_title: 'DEVELOPER', agency: 'GOV TECH', appointment_status: 'PERMANENT', gov_service: 'Y'}];
+            
+            this.voluntaryWork = [{organization: 'RED CROSS', date_from: '2012-01-01', date_to: '2015-12-31', hours: '120', position: 'VOLUNTEER'}];
+            
+            this.learning = [{title: 'ADVANCED PHPC', date_from: '2020-01-01', date_to: '2020-01-05', hours: '40', type: 'TECHNICAL', conducted_by: 'DICT'}];
+            
+            this.other_info = {skills: 'CODING, DRIVING', recognitions: 'BEST EMPLOYEE', memberships: 'PSA'};
+            
+            this.declarations.forEach(d => {
+                d.answer = 'No';
+                d.details = '';
+            });
+            
+            this.references = [
+                {name: 'RICARDO SANTOS', address: 'QUEZON CITY', contact: '0917-000-0001'},
+                {name: 'TERESA GARCIA', address: 'MAKATI CITY', contact: '0917-000-0002'},
+                {name: 'JOSE RIZAL', address: 'LAGUNA', contact: '0917-000-0003'}
+            ];
+            
+            this.government_id = {id_type: 'PASSPORT', id_number: 'P1234567A', place_issued: 'DFA MANILA'};
         }
     }" x-cloak>
 
@@ -437,34 +502,121 @@
                         <div class="space-y-4">
                             <!-- Question 34 -->
                             <div class="border p-4 rounded">
-                                <p class="text-sm font-medium mb-2">34. Are you related by consanguinity or affinity to the appointing or recommending authority?</p>
-                                <div class="ml-4 space-y-2">
-                                     <input type="hidden" name="declarations[0][question_no]" value="34">
+                                <p class="text-sm font-medium mb-2">34. Are you related by consanguinity or affinity to the appointing or recommending authority, or to the chief of bureau or office or to the person who has immediate supervision over you in the Office, Bureau or Department where you will be apppointed,</p>
+                                <div class="ml-4 space-y-4">
                                      <div>
-                                        <p class="text-xs text-gray-600">a. Within the third degree?</p>
-                                        <label><input type="radio" name="declarations[0][answer]" x-model="declarations[0].answer" value="Yes"> Yes</label>
-                                        <label><input type="radio" name="declarations[0][answer]" x-model="declarations[0].answer" value="No"> No</label>
+                                        <p class="text-xs text-gray-600 mb-1">a. within the third degree?</p>
+                                        <input type="hidden" name="declarations[0][question_no]" value="34a">
+                                        <label class="mr-4"><input type="radio" name="declarations[0][answer]" x-model="declarations[0].answer" value="Yes"> Yes</label>
+                                        <label><input type="radio" name="declarations[0][answer]" x-model="declarations[0].answer" value="No"> No </label>
+                                     </div>
+                                     <div>
+                                        <p class="text-xs text-gray-600 mb-1">b. within the fourth degree (for Local Government Unit - Career Employees)?</p>
+                                        <input type="hidden" name="declarations[1][question_no]" value="34b">
+                                        <label class="mr-4"><input type="radio" name="declarations[1][answer]" x-model="declarations[1].answer" value="Yes"> Yes</label>
+                                        <label><input type="radio" name="declarations[1][answer]" x-model="declarations[1].answer" value="No"> No </label>
+                                        <input type="text" name="declarations[1][details]" x-model="declarations[1].details" placeholder="If YES, give details" class="mt-2 block w-full rounded border-gray-300 text-sm">
                                      </div>
                                 </div>
                             </div>
+
                              <!-- Question 35 -->
                             <div class="border p-4 rounded">
                                 <p class="text-sm font-medium mb-2">35. a. Have you ever been found guilty of any administrative offense?</p>
                                 <div class="ml-4 space-y-2">
-                                     <input type="hidden" name="declarations[1][question_no]" value="35">
-                                     <label><input type="radio" name="declarations[1][answer]" x-model="declarations[1].answer" value="Yes"> Yes</label>
-                                     <label><input type="radio" name="declarations[1][answer]" x-model="declarations[1].answer" value="No"> No</label>
-                                     <input type="text" name="declarations[1][details]" x-model="declarations[1].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
-                                </div>
-                            </div>
-                            <!-- Question 36 -->
-                            <div class="border p-4 rounded">
-                                <p class="text-sm font-medium mb-2">36. Have you ever been convicted of any crime or violation of any law?</p>
-                                <div class="ml-4 space-y-2">
-                                     <input type="hidden" name="declarations[2][question_no]" value="36">
-                                     <label><input type="radio" name="declarations[2][answer]" x-model="declarations[2].answer" value="Yes"> Yes</label>
+                                     <input type="hidden" name="declarations[2][question_no]" value="35a">
+                                     <label class="mr-4"><input type="radio" name="declarations[2][answer]" x-model="declarations[2].answer" value="Yes"> Yes</label>
                                      <label><input type="radio" name="declarations[2][answer]" x-model="declarations[2].answer" value="No"> No</label>
                                      <input type="text" name="declarations[2][details]" x-model="declarations[2].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                </div>
+                                <p class="text-sm font-medium mt-4 mb-2">b. Have you been criminally charged before any court?</p>
+                                <div class="ml-4 space-y-2">
+                                     <input type="hidden" name="declarations[3][question_no]" value="35b">
+                                     <label class="mr-4"><input type="radio" name="declarations[3][answer]" x-model="declarations[3].answer" value="Yes"> Yes</label>
+                                     <label><input type="radio" name="declarations[3][answer]" x-model="declarations[3].answer" value="No"> No</label>
+                                     <div class="grid grid-cols-2 gap-2 mt-1">
+                                         <input type="text" name="declarations[3][details]" x-model="declarations[3].details" placeholder="If YES, Date Filed" class="block w-full rounded border-gray-300 text-sm">
+                                         <input type="text" name="declarations[3][status]" placeholder="Status of Case/s" class="block w-full rounded border-gray-300 text-sm">
+                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Question 36 -->
+                            <div class="border p-4 rounded">
+                                <p class="text-sm font-medium mb-2">36. Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?</p>
+                                <div class="ml-4 space-y-2">
+                                     <input type="hidden" name="declarations[4][question_no]" value="36">
+                                     <label class="mr-4"><input type="radio" name="declarations[4][answer]" x-model="declarations[4].answer" value="Yes"> Yes</label>
+                                     <label><input type="radio" name="declarations[4][answer]" x-model="declarations[4].answer" value="No"> No</label>
+                                     <input type="text" name="declarations[4][details]" x-model="declarations[4].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Question 37 -->
+                            <div class="border p-4 rounded">
+                                <p class="text-sm font-medium mb-2">37. Have you ever been separated from the service in any of the following modes: resignation, retirement, dropped from the rolls, dismissal, termination, end of term, finished contract or phased out (abolition) in the public or private sector?</p>
+                                <div class="ml-4 space-y-2">
+                                     <input type="hidden" name="declarations[5][question_no]" value="37">
+                                     <label class="mr-4"><input type="radio" name="declarations[5][answer]" x-model="declarations[5].answer" value="Yes"> Yes</label>
+                                     <label><input type="radio" name="declarations[5][answer]" x-model="declarations[5].answer" value="No"> No</label>
+                                     <input type="text" name="declarations[5][details]" x-model="declarations[5].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Question 38 -->
+                            <div class="border p-4 rounded">
+                                <p class="text-sm font-medium mb-2">38. a. Have you ever been a candidate in a national or local election held within the last year (except Barangay election)?</p>
+                                <div class="ml-4 space-y-2">
+                                     <input type="hidden" name="declarations[6][question_no]" value="38a">
+                                     <label class="mr-4"><input type="radio" name="declarations[6][answer]" x-model="declarations[6].answer" value="Yes"> Yes</label>
+                                     <label><input type="radio" name="declarations[6][answer]" x-model="declarations[6].answer" value="No"> No</label>
+                                     <input type="text" name="declarations[6][details]" x-model="declarations[6].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                </div>
+                                <p class="text-sm font-medium mt-4 mb-2">b. Have you resigned from the government service during the three (3)-month period before the last election to promote/actively campaign for a national or local candidate?</p>
+                                <div class="ml-4 space-y-2">
+                                     <input type="hidden" name="declarations[7][question_no]" value="38b">
+                                     <label class="mr-4"><input type="radio" name="declarations[7][answer]" x-model="declarations[7].answer" value="Yes"> Yes</label>
+                                     <label><input type="radio" name="declarations[7][answer]" x-model="declarations[7].answer" value="No"> No</label>
+                                     <input type="text" name="declarations[7][details]" x-model="declarations[7].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Question 39 -->
+                            <div class="border p-4 rounded">
+                                <p class="text-sm font-medium mb-2">39. Have you acquired the status of an immigrant or permanent resident of another country?</p>
+                                <div class="ml-4 space-y-2">
+                                     <input type="hidden" name="declarations[8][question_no]" value="39">
+                                     <label class="mr-4"><input type="radio" name="declarations[8][answer]" x-model="declarations[8].answer" value="Yes"> Yes</label>
+                                     <label><input type="radio" name="declarations[8][answer]" x-model="declarations[8].answer" value="No"> No </label>
+                                     <input type="text" name="declarations[8][details]" x-model="declarations[8].details" placeholder="If YES, give details (country)" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Question 40 -->
+                            <div class="border p-4 rounded">
+                                <p class="text-sm font-medium mb-2">40. Pursuant to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta for Disabled Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer the following items:</p>
+                                <div class="ml-4 space-y-4">
+                                     <div>
+                                        <p class="text-xs text-gray-600 mb-1">a. Are you a member of any indigenous group?</p>
+                                        <input type="hidden" name="declarations[9][question_no]" value="40a">
+                                        <label class="mr-4"><input type="radio" name="declarations[9][answer]" x-model="declarations[9].answer" value="Yes"> Yes</label>
+                                        <label><input type="radio" name="declarations[9][answer]" x-model="declarations[9].answer" value="No"> No </label>
+                                        <input type="text" name="declarations[9][details]" x-model="declarations[9].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                     </div>
+                                     <div>
+                                        <p class="text-xs text-gray-600 mb-1">b. Are you a person with disability?</p>
+                                        <input type="hidden" name="declarations[10][question_no]" value="40b">
+                                        <label class="mr-4"><input type="radio" name="declarations[10][answer]" x-model="declarations[10].answer" value="Yes"> Yes</label>
+                                        <label><input type="radio" name="declarations[10][answer]" x-model="declarations[10].answer" value="No"> No </label>
+                                        <input type="text" name="declarations[10][details]" x-model="declarations[10].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                     </div>
+                                     <div>
+                                        <p class="text-xs text-gray-600 mb-1">c. Are you a solo parent?</p>
+                                        <input type="hidden" name="declarations[11][question_no]" value="40c">
+                                        <label class="mr-4"><input type="radio" name="declarations[11][answer]" x-model="declarations[11].answer" value="Yes"> Yes</label>
+                                        <label><input type="radio" name="declarations[11][answer]" x-model="declarations[11].answer" value="No"> No </label>
+                                        <input type="text" name="declarations[11][details]" x-model="declarations[11].details" placeholder="If YES, give details" class="mt-1 block w-full rounded border-gray-300 text-sm">
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -524,6 +676,9 @@
                                 Next
                             </button>
 
+                            <button type="button" @click="fillMockData()" class="px-6 py-2 bg-yellow-500 border border-transparent rounded-md text-sm font-medium text-white hover:bg-yellow-600">
+                                Fill Mock Data
+                            </button>
                             <button type="button" @click="showPreview = true" class="px-6 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">
                                 Preview
                             </button>
