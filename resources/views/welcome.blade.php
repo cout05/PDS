@@ -112,39 +112,50 @@
             <div class="w-full md:w-64 shrink-0">
                 <nav class="space-y-1">
                     @foreach([
-                        '1. Personal Info', '2. Addresses', '3. Spouse', '4. Children', '5. Parents',
-                        '6. Education', '7. Eligibility', '8. Work Exp.', '9. Voluntary Work',
-                        '10. Learning', '11. Other Info', '12. Declarations', '13. References', '14. ID'
-                    ] as $index => $label)
-                        <button @click="goTo({{ $index + 1 }})" 
-                            :class="step === {{ $index + 1 }} ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'"
-                            class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors">
-                            <span :class="step === {{ $index + 1 }} ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'"
-                                class="w-6 h-6 flex items-center justify-center rounded-full text-xs mr-3 transition-colors">
-                                {{ $index + 1 }}
-                            </span>
-                            {{ $label }}
-                        </button>
+                            '1. Personal Info',
+                            '2. Addresses',
+                            '3. Spouse',
+                            '4. Children',
+                            '5. Parents',
+                            '6. Education',
+                            '7. Eligibility',
+                            '8. Work Exp.',
+                            '9. Voluntary Work',
+                            '10. Learning',
+                            '11. Other Info',
+                            '12. Declarations',
+                            '13. References',
+                            '14. ID'
+                        ] as $index => $label)
+                                        <button @click="goTo({{ $index + 1 }})" 
+                                            :class="step === {{ $index + 1 }} ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'"
+                                            class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors">
+                                            <span :class="step === {{ $index + 1 }} ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'"
+                                                class="w-6 h-6 flex items-center justify-center rounded-full text-xs mr-3 transition-colors">
+                                                {{ $index + 1 }}
+                                            </span>
+                                            {{ $label }}
+                                        </button>
                     @endforeach
                 </nav>
             </div>
 
             <!-- Form Area -->
             <div class="flex-1 bg-white p-6 shadow-sm ring-1 ring-gray-900/5 rounded-xl">
-                <form action="{{ route('pds.store') }}" method="POST">
+                <form action="{{ route('pds.store') }}" method="POST" novalidate>
                     @csrf
                     
                     <!-- Step 1: Personal Information -->
                     <div x-show="step === 1" class="space-y-6">
                         <h2 class="text-xl font-semibold border-b pb-2">I. Personal Information</h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div><label class="block text-sm font-medium">Surname</label><input type="text" name="surname" x-model="surname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required></div>
-                            <div><label class="block text-sm font-medium">First Name</label><input type="text" name="first_name" x-model="first_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required></div>
+                            <div><label class="block text-sm font-medium">Surname</label><input type="text" name="surname" x-model="surname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
+                            <div><label class="block text-sm font-medium">First Name</label><input type="text" name="first_name" x-model="first_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
                             <div><label class="block text-sm font-medium">Middle Name</label><input type="text" name="middle_name" x-model="middle_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
                             
                             <div><label class="block text-sm font-medium">Name Extension</label><input type="text" name="name_extension" x-model="name_extension" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
-                            <div><label class="block text-sm font-medium">Date of Birth</label><input type="date" name="date_of_birth" x-model="date_of_birth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required></div>
-                            <div><label class="block text-sm font-medium">Place of Birth</label><input type="text" name="place_of_birth" x-model="place_of_birth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" required></div>
+                            <div><label class="block text-sm font-medium">Date of Birth</label><input type="date" name="date_of_birth" x-model="date_of_birth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
+                            <div><label class="block text-sm font-medium">Place of Birth</label><input type="text" name="place_of_birth" x-model="place_of_birth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
                             
                             <div>
                                 <label class="block text-sm font-medium">Sex</label>
@@ -478,8 +489,23 @@
                     <div x-show="step === 14" class="space-y-6">
                         <h2 class="text-xl font-semibold border-b pb-2">XIV. Government ID</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="hidden" name="photo" x-model="photo">
+                            <div class="col-span-2 flex items-center gap-6 mb-4">
+                                <div class="w-32 h-40 border-2 border-dashed border-gray-300 rounded flex items-center justify-center overflow-hidden bg-gray-50">
+                                    <template x-if="photo">
+                                        <img :src="photo" class="w-full h-full object-cover">
+                                    </template>
+                                    <template x-if="!photo">
+                                        <span class="text-xs text-gray-400 text-center px-2">Passport Photo</span>
+                                    </template>
+                                </div>
+                                <div class="flex-1">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Passport Size Photo</label>
+                                    <input type="file" @change="handlePhoto" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                    <p class="mt-1 text-xs text-gray-500">Attach a passport-sized photo taken within the last 6 months.</p>
+                                </div>
+                            </div>
                             <div><label class="block text-sm font-medium">Government Issued ID</label><input type="text" name="government_id[id_type]" x-model="government_id.id_type" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm" placeholder="e.g. Passport, GSIS, SSS, LTO"></div>
-                            <div><label class="block text-sm font-medium">Passport Size Photo</label><input type="file" @change="handlePhoto" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"></div>
                             <div><label class="block text-sm font-medium">ID/License No.</label><input type="text" name="government_id[id_number]" x-model="government_id.id_number" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></div>
                             <div><label class="block text-sm font-medium">Date/Place of Issuance</label><input type="text" name="government_id[place_issued]" x-model="government_id.place_issued" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></div>
                         </div>
@@ -501,7 +527,7 @@
                             <button type="button" @click="showPreview = true" class="px-6 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">
                                 Preview
                             </button>
-                            <button type="submit" class="px-6 py-2 bg-green-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-green-700">
+                            <button type="submit" x-show="step === maxStep" class="px-6 py-2 bg-green-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-green-700">
                                 Submit PDS
                             </button>
                         </div>
@@ -526,7 +552,7 @@
                                             #pds-preview-content th { background-color: #f0f0f0; text-align: left; font-weight: normal; font-style: italic; font-size: 8pt; }
                                             #pds-preview-content .section-header { background-color: #999; color: white; padding: 2px 5px; font-weight: bold; font-style: italic; border: 1px solid black; margin-top: 10px; font-size: 9pt; }
                                             
-                                            #pds-preview-content .input-text { width: 100%; background: transparent; border: none; font-weight: bold; font-size: 9pt; font-family: 'Courier New', monospace; color: #000; }
+                                            #pds-preview-content .input-text { width: 100%; background: transparent; border: none; font-weight: bold; font-size: 9pt; font-family: "Courier New", monospace; color: #000; text-align: center; }
                                             #pds-preview-content .checkbox-container { font-size: 10px; display: flex; align-items: center; gap: 4px; }
                                             
                                             #pds-preview-content .header { text-align: center; margin-bottom: 10px; }
@@ -556,8 +582,6 @@
                             </div>
                         </div>
                     </template>
-                    </div>
-
                 </form>
             </div>
         </div>
