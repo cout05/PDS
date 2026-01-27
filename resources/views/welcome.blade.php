@@ -7,7 +7,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-    <!-- Scripts -->
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
@@ -478,16 +478,17 @@
 
                     <!-- Action Buttons -->
                     <div class="mt-8 pt-6 border-t flex justify-between">
-                        <button type="button" @click="prev()" x-show="step > 1" class="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
-                            Previous
-                        </button>
-                        <span x-show="step === 1"></span> <!-- Spacer -->
+                        <div>
+                            <button type="button" @click="prev()" x-show="step > 1" class="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                                Previous
+                            </button>
+                        </div>
                         
-                        <button type="button" @click="next()" x-show="step < maxStep" class="px-6 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700">
-                            Next
-                        </button>
+                        <div class="flex gap-2">
+                            <button type="button" @click="next()" x-show="step < maxStep" class="px-6 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700">
+                                Next
+                            </button>
 
-                        <div x-show="step === maxStep" class="flex gap-4">
                             <button type="button" @click="showPreview = true" class="px-6 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">
                                 Preview
                             </button>
