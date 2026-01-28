@@ -60,95 +60,95 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        
-        /* Enhanced Input Styling */
-        input[type="text"]:not(#pds-preview-content input),
-        input[type="email"]:not(#pds-preview-content input),
-        input[type="tel"]:not(#pds-preview-content input),
-        input[type="date"]:not(#pds-preview-content input),
-        input[type="number"]:not(#pds-preview-content input),
-        input[type="file"]:not(#pds-preview-content input),
-        select:not(#pds-preview-content select),
-        textarea:not(#pds-preview-content textarea) {
-            border: 2px solid #e5e7eb !important;
-            background: #ffffff !important;
-            transition: all 0.2s ease !important;
-            padding: 0.625rem 0.875rem !important;
-            font-size: 0.9375rem !important;
-        }
 
-        input[type="text"]:not(#pds-preview-content input):hover,
-        input[type="email"]:not(#pds-preview-content input):hover,
-        input[type="tel"]:not(#pds-preview-content input):hover,
-        input[type="date"]:not(#pds-preview-content input):hover,
-        input[type="number"]:not(#pds-preview-content input):hover,
-        select:not(#pds-preview-content select):hover,
-        textarea:not(#pds-preview-content textarea):hover {
-            border-color: #c7d2fe !important;
-            background: #fafbff !important;
-        }
+            /* Enhanced Input Styling */
+            input[type="text"]:not(#pds-preview-content input),
+            input[type="email"]:not(#pds-preview-content input),
+            input[type="tel"]:not(#pds-preview-content input),
+            input[type="date"]:not(#pds-preview-content input),
+            input[type="number"]:not(#pds-preview-content input),
+            input[type="file"]:not(#pds-preview-content input),
+            select:not(#pds-preview-content select),
+            textarea:not(#pds-preview-content textarea) {
+                border: 2px solid #e5e7eb !important;
+                background: #ffffff !important;
+                transition: all 0.2s ease !important;
+                padding: 0.625rem 0.875rem !important;
+                font-size: 0.9375rem !important;
+            }
 
-        input[type="text"]:not(#pds-preview-content input):focus,
-        input[type="email"]:not(#pds-preview-content input):focus,
-        input[type="tel"]:not(#pds-preview-content input):focus,
-        input[type="date"]:not(#pds-preview-content input):focus,
-        input[type="number"]:not(#pds-preview-content input):focus,
-        select:not(#pds-preview-content select):focus,
-        textarea:not(#pds-preview-content textarea):focus {
-            outline: none !important;
-            border-color: #8b5cf6 !important;
-            background: #ffffff !important;
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
-            transform: translateY(-1px);
-        }
+            input[type="text"]:not(#pds-preview-content input):hover,
+            input[type="email"]:not(#pds-preview-content input):hover,
+            input[type="tel"]:not(#pds-preview-content input):hover,
+            input[type="date"]:not(#pds-preview-content input):hover,
+            input[type="number"]:not(#pds-preview-content input):hover,
+            select:not(#pds-preview-content select):hover,
+            textarea:not(#pds-preview-content textarea):hover {
+                border-color: #c7d2fe !important;
+                background: #fafbff !important;
+            }
 
-        /* Label Styling */
-        label:not(#pds-preview-content label) {
-            color: #374151 !important;
-            font-weight: 600 !important;
-            margin-bottom: 0.375rem !important;
-            font-size: 0.875rem !important;
-        }
+            input[type="text"]:not(#pds-preview-content input):focus,
+            input[type="email"]:not(#pds-preview-content input):focus,
+            input[type="tel"]:not(#pds-preview-content input):focus,
+            input[type="date"]:not(#pds-preview-content input):focus,
+            input[type="number"]:not(#pds-preview-content input):focus,
+            select:not(#pds-preview-content select):focus,
+            textarea:not(#pds-preview-content textarea):focus {
+                outline: none !important;
+                border-color: #8b5cf6 !important;
+                background: #ffffff !important;
+                box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+                transform: translateY(-1px);
+            }
 
-        /* Select Dropdown Arrow */
-        select:not(#pds-preview-content select) {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
-            background-position: right 0.5rem center !important;
-            background-repeat: no-repeat !important;
-            background-size: 1.5em 1.5em !important;
-            padding-right: 2.5rem !important;
-        }
+            /* Label Styling */
+            label:not(#pds-preview-content label) {
+                color: #374151 !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.375rem !important;
+                font-size: 0.875rem !important;
+            }
 
-        /* Textarea specific */
-        textarea:not(#pds-preview-content textarea) {
-            min-height: 80px !important;
-            resize: vertical !important;
-        }
+            /* Select Dropdown Arrow */
+            select:not(#pds-preview-content select) {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+                background-position: right 0.5rem center !important;
+                background-repeat: no-repeat !important;
+                background-size: 1.5em 1.5em !important;
+                padding-right: 2.5rem !important;
+            }
 
-        /* Placeholder styling */
-        :not(#pds-preview-content)::placeholder {
-            color: #9ca3af !important;
-            opacity: 1 !important;
-        }
+            /* Textarea specific */
+            textarea:not(#pds-preview-content textarea) {
+                min-height: 80px !important;
+                resize: vertical !important;
+            }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
+            /* Placeholder styling */
+            :not(#pds-preview-content)::placeholder {
+                color: #9ca3af !important;
+                opacity: 1 !important;
+            }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
+            /* Custom Scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+                height: 8px;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
+            ::-webkit-scrollbar-track {
+                background: #f1f5f9;
+            }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+            ::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 4px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
     </style>
 </head>
 
@@ -315,12 +315,14 @@
                 surname: this.surname, 
                 first_name: rand(firstNames), 
                 middle_name: rand(middleNames), 
-                name_extension: Math.random() > 0.8 ? 'SR' : ''
+                name_extension: Math.random() > 0.8 ? 'SR' : '',
+                date_of_birth: ''
             };
             this.mother = {
                 surname: rand(lastNames), 
                 first_name: rand(firstNames), 
-                middle_name: rand(middleNames)
+                middle_name: rand(middleNames),
+                date_of_birth: ''
             };
             
             this.children = [

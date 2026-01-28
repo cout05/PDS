@@ -315,10 +315,10 @@
                 <div><input type="text" class="input-text" :value="father.surname" readonly></div>
             </td>
             <td colspan="2">
-                <div><input type="text" class="input-text" :value="getChild(6).full_name" readonly></div>
+                <div><input type="text" class="input-text" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(6).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="father.date_of_birth" readonly></div>
             </td>
         </tr>
         <tr>
@@ -331,10 +331,10 @@
                         :value="father.name_extension" readonly style="background-color: transparent;"></div>
             </th>
             <td colspan="2">
-                <div><input type="text" class="input-text" :value="getChild(7).full_name" readonly></div>
+                <div><input type="text" class="input-text" :value="getChild(6).full_name" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(7).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="getChild(6).date_of_birth" readonly></div>
             </td>
         </tr>
         <tr>
@@ -343,10 +343,10 @@
                 <div><input type="text" class="input-text" :value="father.middle_name" readonly></div>
             </td>
             <td colspan="2">
-                <div><input type="text" class="input-text" :value="getChild(8).full_name" readonly></div>
+                <div><input type="text" class="input-text" :value="getChild(7).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(8).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="getChild(7).date_of_birth" readonly></div>
             </td>
         </tr>
         <tr>
@@ -355,29 +355,41 @@
                 <div><input type="text" class="input-text" :value="mother.surname" readonly></div>
             </td>
             <td colspan="2">
-                <div><input type="text" class="input-text" :value="getChild(9).full_name" readonly></div>
+                <div><input type="text" class="input-text" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(9).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="mother.date_of_birth" readonly></div>
             </td>
         </tr>
         <tr>
             <th colspan="2" style="border: none">SURNAME</th>
             <td colspan="3"><input type="text" class="input-text" :value="mother.surname" readonly></td>
-            <td colspan="2"><input type="text" class="input-text"></td>
-            <td><input type="text" class="input-text"></td>
+            <td colspan="2">
+                <div><input type="text" class="input-text" :value="getChild(8).full_name" readonly></div>
+            </td>
+            <td>
+                <div><input type="text" class="input-text" :value="getChild(8).date_of_birth" readonly></div>
+            </td>
         </tr>
         <tr>
             <th colspan="2" style="border: none">FIRST NAME</th>
             <td colspan="3"><input type="text" class="input-text" :value="mother.first_name" readonly></td>
-            <td colspan="2"><input type="text" class="input-text"></td>
-            <td><input type="text" class="input-text"></td>
+            <td colspan="2">
+                <div><input type="text" class="input-text" :value="getChild(9).full_name" readonly></div>
+            </td>
+            <td>
+                <div><input type="text" class="input-text" :value="getChild(9).date_of_birth" readonly></div>
+            </td>
         </tr>
         <tr>
             <th colspan="2" style="border: none">MIDDLE NAME</th>
             <td colspan="3"><input type="text" class="input-text" :value="mother.middle_name" readonly></td>
-            <td colspan="2"><input type="text" class="input-text"></td>
-            <td><input type="text" class="input-text"></td>
+            <td colspan="2">
+                <div><input type="text" class="input-text" :value="getChild(10).full_name" readonly></div>
+            </td>
+            <td>
+                <div><input type="text" class="input-text" :value="getChild(10).date_of_birth" readonly></div>
+            </td>
         </tr>
         <tr>
             <td colspan="8" class="continuation" style="color: red;">(Continue on separate sheet if necessary)</td>
