@@ -33,8 +33,8 @@
             <td colspan="4"><input type="text" class="input-text" :value="middle_name" readonly></td>
         </tr>
         <tr>
-            <th colspan="2">3. DATE OF BIRTH<br>(dd/mm/yyyy)</th>
-            <td colspan="2"><input type="text" class="input-text" :value="date_of_birth" readonly></td>
+            <th colspan="2">3. DATE OF BIRTH<br>(mm/dd/yyyy)</th>
+            <td colspan="2"><input type="text" class="input-text" :value="formatDate(date_of_birth)" readonly></td>
             <th rowspan="1" style="border-bottom: none;">16. CITIZENSHIP</th>
             <td rowspan="2">
                 <div style="display: flex; align-items: start; gap: 10%;">
@@ -245,7 +245,7 @@
                 <div><input type="text" class="input-text" :value="getChild(0).full_name" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(0).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(0).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -257,7 +257,8 @@
                 <div><input type="text" class="input-text" :value="getChild(1).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(1).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(1).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -269,7 +270,8 @@
                 <div><input type="text" class="input-text" :value="getChild(2).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(2).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(2).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -281,7 +283,8 @@
                 <div><input type="text" class="input-text" :value="getChild(3).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(3).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(3).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -293,7 +296,8 @@
                 <div><input type="text" class="input-text" :value="getChild(4).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(4).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(4).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -305,7 +309,7 @@
                 <div><input type="text" class="input-text" :value="getChild(5).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(5).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(5).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -317,7 +321,7 @@
                 <div><input type="text" class="input-text" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="father.date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(father.date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -333,7 +337,8 @@
                 <div><input type="text" class="input-text" :value="getChild(6).full_name" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(6).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(6).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -345,7 +350,8 @@
                 <div><input type="text" class="input-text" :value="getChild(7).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(7).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(7).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -357,7 +363,7 @@
                 <div><input type="text" class="input-text" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="mother.date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(mother.date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -367,7 +373,8 @@
                 <div><input type="text" class="input-text" :value="getChild(8).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(8).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(8).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -377,7 +384,8 @@
                 <div><input type="text" class="input-text" :value="getChild(9).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(9).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(9).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -387,7 +395,8 @@
                 <div><input type="text" class="input-text" :value="getChild(10).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(10).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(10).date_of_birth)" readonly>
+                </div>
             </td>
         </tr>
         <tr>
@@ -422,43 +431,43 @@
         </tr>
         <tr>
             <th>SECONDARY</th>
-            <td><input type="text" class="input-text" :value="getEdu('Secondary').school_name" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('Secondary').degree_course" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('Secondary').school_name" readonly></textarea></td>
+            <td><textarea class="input-text" :value="getEdu('Secondary').degree_course" readonly></textarea></td>
             <td><input type="text" class="input-text" :value="getEdu('Secondary').from_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Secondary').to_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Secondary').highest_level" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Secondary').year_graduated" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('Secondary').honors" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('Secondary').honors" readonly></textarea></td>
         </tr>
         <tr>
             <th>VOCATIONAL / TRADE COURSE</th>
-            <td><input type="text" class="input-text" :value="getEdu('Vocational').school_name" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('Vocational').degree_course" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('Vocational').school_name" readonly></textarea></td>
+            <td><textarea class="input-text" :value="getEdu('Vocational').degree_course" readonly></textarea></td>
             <td><input type="text" class="input-text" :value="getEdu('Vocational').from_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Vocational').to_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Vocational').highest_level" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Vocational').year_graduated" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('Vocational').honors" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('Vocational').honors" readonly></textarea></td>
         </tr>
         <tr>
             <th>COLLEGE</th>
-            <td><input type="text" class="input-text" :value="getEdu('College').school_name" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('College').degree_course" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('College').school_name" readonly></textarea></td>
+            <td><textarea class="input-text" :value="getEdu('College').degree_course" readonly></textarea></td>
             <td><input type="text" class="input-text" :value="getEdu('College').from_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('College').to_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('College').highest_level" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('College').year_graduated" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('College').honors" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('College').honors" readonly></textarea></td>
         </tr>
         <tr>
             <th>GRADUATE STUDIES</th>
-            <td><input type="text" class="input-text" :value="getEdu('Graduate').school_name" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('Graduate').degree_course" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('Graduate').school_name" readonly></textarea></td>
+            <td><textarea class="input-text" :value="getEdu('Graduate').degree_course" readonly></textarea></td>
             <td><input type="text" class="input-text" :value="getEdu('Graduate').from_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Graduate').to_year" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Graduate').highest_level" readonly></td>
             <td><input type="text" class="input-text" :value="getEdu('Graduate').year_graduated" readonly></td>
-            <td><input type="text" class="input-text" :value="getEdu('Graduate').honors" readonly></td>
+            <td><textarea class="input-text" :value="getEdu('Graduate').honors" readonly></textarea></td>
         </tr>
         <tr>
             <th colspan="8" style="text-align: center; color: red;">continue on seperate sheet if necessary</th>
@@ -467,7 +476,8 @@
             <th style="font-weight: bold;">SIGNATURE</th>
             <td colspan="2"><input type="text" class="input-text"></td>
             <th colspan="2" style="text-align: center; font-weight: bold;">DATE</th>
-            <td colspan="3"><input type="text" class="input-text"></td>
+            <td colspan="3"><input type="text" class="input-text" :value="formatDate(government_id.date_accomplished)"
+                    readonly></td>
         </tr>
         <tr>
             <th colspan="8" style="background-color: white; text-align: end; font-style: italic;">CS FORM 212 (Revised

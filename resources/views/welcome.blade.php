@@ -356,6 +356,13 @@
             ];
             
             this.government_id = {id_type: rand(['PASSPORT', 'DRIVER LICENSE', 'GSIS UMID']), id_number: String(randNum(1000000, 9999999)), place_issued: rand(cities)};
+        },
+        formatDate(date) {
+            if (!date) return '';
+            // Handle both yyyy-mm-dd and ISO strings
+            const dateStr = date.split('T')[0].trim();
+            const parts = dateStr.split('-');
+            return parts.length === 3 ? `${parts[1]}/${parts[2]}/${parts[0]}` : date;
         }
     }" x-cloak>
 
