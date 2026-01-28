@@ -51,6 +51,23 @@ class PdsController extends Controller
                 'updated_at'
             ]) + ['created_at' => now(), 'updated_at' => now()]);
 
+            // Helper to sanitize array inputs
+            $sanitize = function ($value) {
+                return $value === '' ? null : $value;
+            };
+
+            // Update with sanitized values specific for date fields if they were inserted as ''
+            $dateFields = ['date_of_birth'];
+            $updates = [];
+            foreach ($dateFields as $field) {
+                if ($request->input($field) === '') {
+                    $updates[$field] = null;
+                }
+            }
+            if (!empty($updates)) {
+                DB::table('personal_information')->where('id', $personalInfoId)->update($updates);
+            }
+
             // 2. Addresses
             if ($request->has('residential_address')) {
                 DB::table('addresses')->insert(array_merge($request->input('residential_address'), [
@@ -85,7 +102,7 @@ class PdsController extends Controller
                         DB::table('children')->insert([
                             'personal_information_id' => $personalInfoId,
                             'full_name' => $child['full_name'],
-                            'date_of_birth' => $child['date_of_birth'],
+                            'date_of_birth' => !empty($child['date_of_birth']) ? $child['date_of_birth'] : null,
                             'created_at' => now(),
                             'updated_at' => now()
                         ]);
@@ -191,7 +208,7 @@ class PdsController extends Controller
                     DB::table('declarations')->insert([
                         'personal_information_id' => $personalInfoId,
                         'question_no' => $decl['question_no'],
-                        'answer' => $decl['answer'],
+                        'answer' => $decl['answer'] ?? 'No', // Default to No if missing
                         'details' => $decl['details'] ?? null,
                         'created_at' => now(),
                         'updated_at' => now()

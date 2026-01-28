@@ -1,20 +1,159 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'PDS') }}</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|poppins:600,700" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
+
+        /* Custom Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-down {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        
+        /* Enhanced Input Styling */
+        input[type="text"]:not(#pds-preview-content input),
+        input[type="email"]:not(#pds-preview-content input),
+        input[type="tel"]:not(#pds-preview-content input),
+        input[type="date"]:not(#pds-preview-content input),
+        input[type="number"]:not(#pds-preview-content input),
+        input[type="file"]:not(#pds-preview-content input),
+        select:not(#pds-preview-content select),
+        textarea:not(#pds-preview-content textarea) {
+            border: 2px solid #e5e7eb !important;
+            background: #ffffff !important;
+            transition: all 0.2s ease !important;
+            padding: 0.625rem 0.875rem !important;
+            font-size: 0.9375rem !important;
+        }
+
+        input[type="text"]:not(#pds-preview-content input):hover,
+        input[type="email"]:not(#pds-preview-content input):hover,
+        input[type="tel"]:not(#pds-preview-content input):hover,
+        input[type="date"]:not(#pds-preview-content input):hover,
+        input[type="number"]:not(#pds-preview-content input):hover,
+        select:not(#pds-preview-content select):hover,
+        textarea:not(#pds-preview-content textarea):hover {
+            border-color: #c7d2fe !important;
+            background: #fafbff !important;
+        }
+
+        input[type="text"]:not(#pds-preview-content input):focus,
+        input[type="email"]:not(#pds-preview-content input):focus,
+        input[type="tel"]:not(#pds-preview-content input):focus,
+        input[type="date"]:not(#pds-preview-content input):focus,
+        input[type="number"]:not(#pds-preview-content input):focus,
+        select:not(#pds-preview-content select):focus,
+        textarea:not(#pds-preview-content textarea):focus {
+            outline: none !important;
+            border-color: #8b5cf6 !important;
+            background: #ffffff !important;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+            transform: translateY(-1px);
+        }
+
+        /* Label Styling */
+        label:not(#pds-preview-content label) {
+            color: #374151 !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.375rem !important;
+            font-size: 0.875rem !important;
+        }
+
+        /* Select Dropdown Arrow */
+        select:not(#pds-preview-content select) {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+            background-position: right 0.5rem center !important;
+            background-repeat: no-repeat !important;
+            background-size: 1.5em 1.5em !important;
+            padding-right: 2.5rem !important;
+        }
+
+        /* Textarea specific */
+        textarea:not(#pds-preview-content textarea) {
+            min-height: 80px !important;
+            resize: vertical !important;
+        }
+
+        /* Placeholder styling */
+        :not(#pds-preview-content)::placeholder {
+            color: #9ca3af !important;
+            opacity: 1 !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans antialiased text-gray-900 border-t-4 border-blue-600">
+
+<body class="bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50 font-sans antialiased text-gray-900"
+    style="font-family: 'Inter', sans-serif;">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" x-data="{ 
         step: 1, 
@@ -42,9 +181,37 @@
             {question_no: '40b', answer: '', details: ''},
             {question_no: '40c', answer: '', details: ''}
         ],
+        init() {
+            this.$watch('civil_status', (value) => this.handleCivilStatusChange(value));
+        },
+        handleCivilStatusChange(status) {
+            if (status === 'Single') {
+                this.spouse.surname = 'N/A';
+                this.spouse.first_name = 'N/A';
+                this.spouse.middle_name = 'N/A';
+                this.spouse.name_extension = 'N/A';
+                this.spouse.occupation = 'N/A';
+                this.spouse.employer = 'N/A';
+                this.spouse.business_address = 'N/A';
+                this.spouse.telephone_no = 'N/A';
+            } else {
+                // Clear N/A values if changing status from Single
+                if (this.spouse.surname === 'N/A') this.spouse.surname = '';
+                if (this.spouse.first_name === 'N/A') this.spouse.first_name = '';
+                if (this.spouse.middle_name === 'N/A') this.spouse.middle_name = '';
+                if (this.spouse.name_extension === 'N/A') this.spouse.name_extension = '';
+                if (this.spouse.occupation === 'N/A') this.spouse.occupation = '';
+                if (this.spouse.employer === 'N/A') this.spouse.employer = '';
+                if (this.spouse.business_address === 'N/A') this.spouse.business_address = '';
+                if (this.spouse.telephone_no === 'N/A') this.spouse.telephone_no = '';
+            }
+        },
         next() { if (this.step < this.maxStep) this.step++ },
         prev() { if (this.step > 1) this.step-- },
         goTo(s) { this.step = s },
+        setNoChildren() {
+            this.children = [{full_name: 'N/A', date_of_birth: ''}];
+        },
         addChild() { this.children.push({full_name: '', date_of_birth: ''}) },
         removeChild(index) { this.children.splice(index, 1) },
         children: [{full_name: '', date_of_birth: ''}],
@@ -151,22 +318,44 @@
         }
     }" x-cloak>
 
-        <!-- Header -->
-        <div class="mb-8 text-center">
-            <h1 class="text-3xl font-bold text-gray-900">Personal Data Sheet</h1>
-            <p class="mt-2 text-sm text-gray-500">CS Form No. 212 Revised 2017</p>
+        <!-- Modern Header -->
+        <div class="mb-8 text-center glass rounded-2xl p-6 shadow-lg border border-white/20 animate-fade-in">
+            <div class="inline-flex items-center gap-3 mb-2">
+                <svg class="w-10 h-10 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <h1 class="text-4xl font-bold gradient-text" style="font-family: 'Poppins', sans-serif;">Personal Data
+                    Sheet</h1>
+            </div>
+            <p class="text-sm text-gray-600 font-medium">CS Form No. 212 Revised 2017</p>
+            <p class="text-xs text-gray-500 mt-1">Fill out all required information accurately</p>
         </div>
 
         @if(session('success'))
-            <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                <strong class="font-bold">Success!</strong>
-                <span class="block sm:inline">{{ session('success') }}</span>
+            <div
+                class="mb-4 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 text-green-800 px-6 py-4 rounded-lg shadow-md animate-slide-down flex items-center gap-3">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline ml-2">{{ session('success') }}</span>
+                </div>
             </div>
         @endif
         @if(session('error'))
-            <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
-                <strong class="font-bold">Error!</strong>
-                <span class="block sm:inline">{{ session('error') }}</span>
+            <div
+                class="mb-4 bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-500 text-red-800 px-6 py-4 rounded-lg shadow-md animate-slide-down flex items-center gap-3">
+                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                    <strong class="font-bold">Error!</strong>
+                    <span class="block sm:inline ml-2">{{ session('error') }}</span>
+                </div>
             </div>
         @endif
 
@@ -174,11 +363,11 @@
             <!-- Sidebar Navigation -->
             <x-pds.sidebar />
 
-            <!-- Form Area -->
-            <div class="flex-1 bg-white p-6 shadow-sm ring-1 ring-gray-900/5 rounded-xl">
-                <form action="{{ route('pds.store') }}" method="POST" novalidate>
+            <!-- Modern Form Area -->
+            <div class="flex-1 bg-white/80 backdrop-blur-sm p-8 shadow-xl rounded-2xl border border-white/20">
+                <form action="{{ route('pds.store') }}" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
-                    
+
                     <x-pds.personal-info />
                     <x-pds.addresses />
                     <x-pds.spouse />
@@ -197,26 +386,53 @@
 
 
 
-                    <!-- Action Buttons -->
-                    <div class="mt-8 pt-6 border-t flex justify-between">
+                    <!-- Modern Action Buttons -->
+                    <div class="mt-8 pt-6 border-t border-gray-200 flex justify-between">
                         <div>
-                            <button type="button" @click="prev()" x-show="step > 1" class="px-6 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            <button type="button" @click="prev()" x-show="step > 1"
+                                class="inline-flex items-center gap-2 px-6 py-2.5 bg-white border-2 border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-all shadow-sm hover:shadow-md">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 19l-7-7 7-7" />
+                                </svg>
                                 Previous
                             </button>
                         </div>
-                        
+
                         <div class="flex gap-2">
-                            <button type="button" @click="next()" x-show="step < maxStep" class="px-6 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700">
+                            <button type="button" @click="next()" x-show="step < maxStep"
+                                class="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 font-medium">
                                 Next
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
                             </button>
 
-                            <button type="button" @click="fillMockData()" class="px-6 py-2 bg-yellow-500 border border-transparent rounded-md text-sm font-medium text-white hover:bg-yellow-600">
+                            <button type="button" @click="fillMockData()"
+                                class="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
                                 Fill Mock Data
                             </button>
-                            <button type="button" @click="showPreview = true" class="px-6 py-2 bg-indigo-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-indigo-700">
+                            <button type="button" @click="showPreview = true"
+                                class="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
                                 Preview
                             </button>
-                            <button type="submit" x-show="step === maxStep" class="px-6 py-2 bg-green-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-green-700">
+                            <button type="submit" x-show="step === maxStep"
+                                class="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 font-medium">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
                                 Submit PDS
                             </button>
                         </div>
@@ -229,4 +445,5 @@
         </div>
     </div>
 </body>
+
 </html>
