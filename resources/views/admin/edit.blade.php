@@ -33,25 +33,31 @@
                     email: {{ Js::from(old('email', $submission->email)) }},
                     photo: {{ Js::from(old('photo', $submission->photo)) }},
 
-                    residential_address: {{ Js::from(old('residential_address', $submission->addresses->where('type', 'Residential')->first() ?? (object) ['house_no' => '', 'street' => '', 'subdivision' => '', 'barangay' => '', 'city' => '', 'province' => '', 'zipcode' => ''])) }},
-                    permanent_address: {{ Js::from(old('permanent_address', $submission->addresses->where('type', 'Permanent')->first() ?? (object) ['house_no' => '', 'street' => '', 'subdivision' => '', 'barangay' => '', 'city' => '', 'province' => '', 'zipcode' => ''])) }},
-                    spouse: {{ Js::from(old('spouse', $submission->spouse ?? (object) ['surname' => '', 'first_name' => '', 'middle_name' => '', 'name_extension' => '', 'occupation' => '', 'employer' => '', 'business_address' => '', 'telephone_no' => ''])) }},
-                    father: {{ Js::from(old('father', $submission->parents->where('type', 'Father')->first() ?? (object) ['surname' => '', 'first_name' => '', 'middle_name' => ''])) }},
-                    mother: {{ Js::from(old('mother', $submission->parents->where('type', 'Mother')->first() ?? (object) ['surname' => '', 'first_name' => '', 'middle_name' => ''])) }},
-                    children: {{ Js::from(old('children', $submission->children->count() > 0 ? $submission->children : [['full_name' => '', 'date_of_birth' => '']])) }},
-                    education: {{ Js::from(old('education', $submission->education->count() > 0 ? $submission->education : [['level' => 'Elementary', 'school_name' => '', 'degree_course' => '', 'from_year' => '', 'to_year' => '', 'highest_level' => '', 'year_graduated' => '', 'honors' => '']])) }},
-                    civilService: {{ Js::from(old('civil_service', $submission->civilServiceEligibilities->count() > 0 ? $submission->civilServiceEligibilities : [['eligibility_type' => '', 'rating' => '', 'exam_date' => '', 'exam_place' => '', 'license_no' => '', 'valid_from' => '', 'valid_to' => '']])) }},
-                    workExperience: {{ Js::from(old('work_experience', $submission->workExperiences->count() > 0 ? $submission->workExperiences : [['date_from' => '', 'date_to' => '', 'position_title' => '', 'agency' => '', 'appointment_status' => '', 'gov_service' => 'N']])) }},
-                    voluntaryWork: {{ Js::from(old('voluntary_work', $submission->voluntaryWorks->count() > 0 ? $submission->voluntaryWorks : [['organization' => '', 'date_from' => '', 'date_to' => '', 'hours' => '', 'position' => '']])) }},
-                    learning: {{ Js::from(old('learning', $submission->learningDevelopments->count() > 0 ? $submission->learningDevelopments : [['title' => '', 'date_from' => '', 'date_to' => '', 'hours' => '', 'type' => '', 'conducted_by' => '']])) }},
-                    other_info: {{ Js::from(old('other_info', $submission->otherInformation ?? (object) ['skills' => '', 'recognitions' => '', 'memberships' => ''])) }},
-                    declarations: {{ Js::from(old('declarations', $submission->declarations->count() > 0 ? $submission->declarations : [
+                    @php
+                        $residentialAddr = $submission->addresses->where('type', 'Residential')->first();
+                        $permanentAddr = $submission->addresses->where('type', 'Permanent')->first();
+                        $fatherData = $submission->parents->where('type', 'Father')->first();
+                        $motherData = $submission->parents->where('type', 'Mother')->first();
+                    @endphp
+                    residential_address: {{ Js::from(old('residential_address', $residentialAddr ? $residentialAddr->toArray() : ['house_no' => '', 'street' => '', 'subdivision' => '', 'barangay' => '', 'city' => '', 'province' => '', 'zipcode' => ''])) }},
+                    permanent_address: {{ Js::from(old('permanent_address', $permanentAddr ? $permanentAddr->toArray() : ['house_no' => '', 'street' => '', 'subdivision' => '', 'barangay' => '', 'city' => '', 'province' => '', 'zipcode' => ''])) }},
+                    spouse: {{ Js::from(old('spouse', $submission->spouse ? $submission->spouse->toArray() : ['surname' => '', 'first_name' => '', 'middle_name' => '', 'name_extension' => '', 'occupation' => '', 'employer' => '', 'business_address' => '', 'telephone_no' => ''])) }},
+                    father: {{ Js::from(old('father', $fatherData ? $fatherData->toArray() : ['surname' => '', 'first_name' => '', 'middle_name' => ''])) }},
+                    mother: {{ Js::from(old('mother', $motherData ? $motherData->toArray() : ['surname' => '', 'first_name' => '', 'middle_name' => ''])) }},
+                    children: {{ Js::from(old('children', $submission->children->count() > 0 ? $submission->children->toArray() : [['full_name' => '', 'date_of_birth' => '']])) }},
+                    education: {{ Js::from(old('education', $submission->education->count() > 0 ? $submission->education->toArray() : [['level' => 'Elementary', 'school_name' => '', 'degree_course' => '', 'from_year' => '', 'to_year' => '', 'highest_level' => '', 'year_graduated' => '', 'honors' => '']])) }},
+                    civilService: {{ Js::from(old('civil_service', $submission->civilServiceEligibilities->count() > 0 ? $submission->civilServiceEligibilities->toArray() : [['eligibility_type' => '', 'rating' => '', 'exam_date' => '', 'exam_place' => '', 'license_no' => '', 'valid_from' => '', 'valid_to' => '']])) }},
+                    workExperience: {{ Js::from(old('work_experience', $submission->workExperiences->count() > 0 ? $submission->workExperiences->toArray() : [['date_from' => '', 'date_to' => '', 'position_title' => '', 'agency' => '', 'appointment_status' => '', 'gov_service' => 'N']])) }},
+                    voluntaryWork: {{ Js::from(old('voluntary_work', $submission->voluntaryWorks->count() > 0 ? $submission->voluntaryWorks->toArray() : [['organization' => '', 'date_from' => '', 'date_to' => '', 'hours' => '', 'position' => '']])) }},
+                    learning: {{ Js::from(old('learning', $submission->learningDevelopments->count() > 0 ? $submission->learningDevelopments->toArray() : [['title' => '', 'date_from' => '', 'date_to' => '', 'hours' => '', 'type' => '', 'conducted_by' => '']])) }},
+                    other_info: {{ Js::from(old('other_info', $submission->otherInformation ? $submission->otherInformation->toArray() : ['skills' => '', 'recognitions' => '', 'memberships' => ''])) }},
+                    declarations: {{ Js::from(old('declarations', $submission->declarations->count() > 0 ? $submission->declarations->toArray() : [
         ['question_no' => '34', 'answer' => '', 'details' => ''],
         ['question_no' => '35', 'answer' => '', 'details' => ''],
         ['question_no' => '36', 'answer' => '', 'details' => '']
     ])) }},
-                    references: {{ Js::from(old('references', $submission->references->count() > 0 ? $submission->references : [['name' => '', 'address' => '', 'contact' => ''], ['name' => '', 'address' => '', 'contact' => ''], ['name' => '', 'address' => '', 'contact' => '']])) }},
-                    government_id: {{ Js::from(old('government_id', $submission->identification ?? (object) ['id_type' => '', 'id_number' => '', 'place_issued' => ''])) }},
+                    references: {{ Js::from(old('references', $submission->references->count() > 0 ? $submission->references->toArray() : [['name' => '', 'address' => '', 'contact' => ''], ['name' => '', 'address' => '', 'contact' => ''], ['name' => '', 'address' => '', 'contact' => '']])) }},
+                    government_id: {{ Js::from(old('government_id', $submission->identification ? $submission->identification->toArray() : ['id_type' => '', 'id_number' => '', 'place_issued' => ''])) }},
 
                     next() { if (this.step < this.maxStep) this.step++ },
                     prev() { if (this.step > 1) this.step-- },
