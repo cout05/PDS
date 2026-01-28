@@ -16,7 +16,7 @@
     <table>
         <tr>
             <th colspan="2" style="width: 15%;">2. SURNAME</th>
-            <td colspan="3" style="width: 50%;"><input type="text" class="input-text" :value="surname" readonly></td>
+            <td colspan="4" style="width: 50%;"><input type="text" class="input-text" :value="surname" readonly></td>
         </tr>
         <tr>
             <th colspan="2">FIRST NAME</th>
@@ -247,7 +247,7 @@
         <tr>
             <th colspan="2" style="border: none">FIRST NAME</th>
             <td colspan="1" style="width: 20%;"><div><input type="text" class="input-text" :value="father.first_name" readonly></div></td>
-            <th colspan="2"><div style="font-size: 8px;">NAME EXTENSION (JR., SR)<input type="text" class="input-text" readonly style="background-color: transparent;"></div></th>
+            <th colspan="2"><div style="font-size: 8px;">NAME EXTENSION (JR., SR)<input type="text" class="input-text" :value="father.name_extension" readonly style="background-color: transparent;"></div></th>
             <td colspan="2"><div><input type="text" class="input-text" :value="getChild(7).full_name" readonly></div></td>
             <td style="text-align: center;"><div><input type="text" class="input-text" :value="getChild(7).date_of_birth" readonly></div></td>
         </tr>
