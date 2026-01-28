@@ -1,8 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-        <div class="mb-4">
-            <a href="{{ route('admin.index') }}" class="text-blue-600 hover:underline">&larr; Back to List</a>
+        <div class="mb-6">
+            <a href="{{ route('admin.index') }}" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-purple-600 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to List
+            </a>
         </div>
 
         <script>
@@ -86,50 +91,127 @@
             });
         </script>
 
+        <style>
+            /* Enhanced Input Styling */
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="date"],
+            input[type="number"],
+            select,
+            textarea {
+                border: 2px solid #e5e7eb !important;
+                background: #ffffff !important;
+                transition: all 0.2s ease !important;
+                padding: 0.625rem 0.875rem !important;
+                font-size: 0.9375rem !important;
+            }
+
+            input[type="text"]:hover,
+            input[type="email"]:hover,
+            input[type="tel"]:hover,
+            input[type="date"]:hover,
+            input[type="number"]:hover,
+            select:hover,
+            textarea:hover {
+                border-color: #c7d2fe !important;
+                background: #fafbff !important;
+            }
+
+            input[type="text"]:focus,
+            input[type="email"]:focus,
+            input[type="tel"]:focus,
+            input[type="date"]:focus,
+            input[type="number"]:focus,
+            select:focus,
+            textarea:focus {
+                outline: none !important;
+                border-color: #8b5cf6 !important;
+                background: #ffffff !important;
+                box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+                transform: translateY(-1px);
+            }
+
+            /* Label Styling */
+            label {
+                color: #374151 !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.375rem !important;
+                font-size: 0.875rem !important;
+            }
+
+            /* Select Dropdown Arrow */
+            select {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+                background-position: right 0.5rem center !important;
+                background-repeat: no-repeat !important;
+                background-size: 1.5em 1.5em !important;
+                padding-right: 2.5rem !important;
+            }
+
+            /* Textarea specific */
+            textarea {
+                min-height: 80px !important;
+                resize: vertical !important;
+            }
+
+            /* Placeholder styling */
+            ::placeholder {
+                color: #9ca3af !important;
+                opacity: 1 !important;
+            }
+        </style>
+
         <div x-data="editPdsData()" x-cloak>
 
             <div class="flex flex-col md:flex-row gap-6">
-                <!-- Sidebar Navigation -->
-                <div class="w-full md:w-64 shrink-0 no-print">
-                    <nav class="space-y-1">
-                        @foreach([
-                                '1. Personal Info',
-                                '2. Addresses',
-                                '3. Spouse',
-                                '4. Children',
-                                '5. Parents',
-                                '6. Education',
-                                '7. Eligibility',
-                                '8. Work Exp.',
-                                '9. Voluntary Work',
-                                '10. Learning',
-                                '11. Other Info',
-                                '12. Declarations',
-                                '13. References',
-                                '14. ID'
-                            ] as $index => $label)
-                                    <button @click="goTo({{ $index + 1 }})" 
-                                        :class="step === {{ $index + 1 }} ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'"
-                                        class="w-full flex items-center px-3 py-2 text-sm font-medium rounded-md group transition-colors text-left font-sans">
-                                        <span :class="step === {{ $index + 1 }} ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'"
-                                            class="w-6 h-6 flex items-center justify-center rounded-full text-xs mr-3 transition-colors shrink-0">
-                                            {{ $index + 1 }}
-                                        </span>
-                                        {{ $label }}
-                                    </button>
-                        @endforeach
-                    </nav>
+                <!-- Modern Sidebar Navigation -->
+                <div class="w-full md:w-72 shrink-0 no-print">
+                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 sticky top-24 border border-white/20">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4 px-2" style="font-family: 'Poppins', sans-serif;">Form Sections</h3>
+                        <nav class="space-y-1">
+                            @foreach([
+                                    '1. Personal Info',
+                                    '2. Addresses',
+                                    '3. Spouse',
+                                    '4. Children',
+                                    '5. Parents',
+                                    '6. Education',
+                                    '7. Eligibility',
+                                    '8. Work Exp.',
+                                    '9. Voluntary Work',
+                                    '10. Learning',
+                                    '11. Other Info',
+                                    '12. Declarations',
+                                    '13. References',
+                                    '14. ID'
+                                ] as $index => $label)
+                                        <button @click="goTo({{ $index + 1 }})" 
+                                            :class="step === {{ $index + 1 }} ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md' : 'text-gray-600 hover:bg-purple-50'"
+                                            class="w-full flex items-center px-3 py-2.5 text-sm font-medium rounded-lg group transition-all text-left">
+                                            <span :class="step === {{ $index + 1 }} ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'"
+                                                class="w-7 h-7 flex items-center justify-center rounded-lg text-xs mr-3 transition-all shrink-0 font-bold">
+                                                {{ $index + 1 }}
+                                            </span>
+                                            {{ $label }}
+                                        </button>
+                            @endforeach
+                        </nav>
+                    </div>
                 </div>
 
-                <!-- Form Area -->
-                <div class="flex-1 bg-white p-6 shadow-sm ring-1 ring-gray-900/5 rounded-xl font-sans">
+                <!-- Modern Form Area -->
+                <div class="flex-1 bg-white/80 backdrop-blur-sm p-8 shadow-xl rounded-2xl border border-white/20 font-sans">
                     <form action="{{ route('admin.update', $submission->id) }}" method="POST" novalidate>
                         @csrf
                         @method('PUT')
 
                         <!-- Step 1: Personal Information -->
                         <div x-show="step === 1" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">I. Personal Information</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">I. Personal Information</h2>
+                                <p class="text-sm text-gray-600 mt-1">Basic personal details and identification</p>
+                            </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <div><label class="block text-sm font-medium">Surname</label><input type="text" name="surname" x-model="surname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
                                 <div><label class="block text-sm font-medium">First Name</label><input type="text" name="first_name" x-model="first_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
@@ -175,7 +257,10 @@
 
                         <!-- Step 2: Addresses -->
                         <div x-show="step === 2" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">II. Addresses</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">II. Addresses</h2>
+                                <p class="text-sm text-gray-600 mt-1">Residential and permanent address information</p>
+                            </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Residential -->
                                 <div class="space-y-4 border p-4 rounded bg-gray-50/50">
@@ -208,7 +293,10 @@
 
                         <!-- Step 3: Spouse -->
                         <div x-show="step === 3" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">III. Spouse</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">III. Spouse</h2>
+                                <p class="text-sm text-gray-600 mt-1">Spouse information and employment details</p>
+                            </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div><label class="block text-sm font-medium">Surname</label><input type="text" name="spouse[surname]" x-model="spouse.surname" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"></div>
                                 <div><label class="block text-sm font-medium">First Name</label><input type="text" name="spouse[first_name]" x-model="spouse.first_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"></div>
@@ -223,10 +311,15 @@
 
                         <!-- Step 4: Children -->
                         <div x-show="step === 4" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2 flex justify-between">
-                                <span>IV. Children</span>
-                                <button type="button" @click="addChild()" class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ Add Child</button>
-                            </h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">IV. Children</h2>
+                                        <p class="text-sm text-gray-600 mt-1">Names and birth dates of children</p>
+                                    </div>
+                                    <button type="button" @click="addChild()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium">+ Add Child</button>
+                                </div>
+                            </div>
                             <div class="space-y-4">
                                 <template x-for="(child, index) in children" :key="index">
                                     <div class="flex gap-4 items-end border p-4 rounded bg-gray-50/50">
@@ -246,7 +339,10 @@
 
                         <!-- Step 5: Parents -->
                         <div x-show="step === 5" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">V. Parents</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">V. Parents</h2>
+                                <p class="text-sm text-gray-600 mt-1">Father's and mother's information</p>
+                            </div>
                             <div class="space-y-6">
                                 <div class="border p-4 rounded bg-gray-50/50">
                                     <h3 class="font-medium mb-3">Father's Surname</h3>
@@ -269,10 +365,15 @@
 
                         <!-- Step 6: Education -->
                         <div x-show="step === 6" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2 flex justify-between">
-                                <span>VI. Education</span>
-                                <button type="button" @click="addEducation()" class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ Add</button>
-                            </h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">VI. Education</h2>
+                                        <p class="text-sm text-gray-600 mt-1">Educational background and qualifications</p>
+                                    </div>
+                                    <button type="button" @click="addEducation()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium">+ Add</button>
+                                </div>
+                            </div>
                             <template x-for="(edu, index) in education" :key="index">
                                 <div class="border p-4 rounded bg-gray-50/50 space-y-4">
                                     <div class="flex justify-between">
@@ -302,10 +403,15 @@
 
                         <!-- Step 7: Civil Service Eligibility -->
                         <div x-show="step === 7" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2 flex justify-between">
-                                <span>VII. Civil Service Eligibility</span>
-                                <button type="button" @click="addCivilService()" class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ Add</button>
-                            </h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">VII. Civil Service Eligibility</h2>
+                                        <p class="text-sm text-gray-600 mt-1">Civil service examination eligibility</p>
+                                    </div>
+                                    <button type="button" @click="addCivilService()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium">+ Add</button>
+                                </div>
+                            </div>
                             <template x-for="(cs, index) in civilService" :key="index">
                                 <div class="border p-4 rounded bg-gray-50/50 space-y-4">
                                     <div class="flex justify-between">
@@ -326,10 +432,15 @@
 
                         <!-- Step 8: Work Experience -->
                         <div x-show="step === 8" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2 flex justify-between">
-                                <span>VIII. Work Experience</span>
-                                <button type="button" @click="addWork()" class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ Add</button>
-                            </h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">VIII. Work Experience</h2>
+                                        <p class="text-sm text-gray-600 mt-1">Employment history and positions held</p>
+                                    </div>
+                                    <button type="button" @click="addWork()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium">+ Add</button>
+                                </div>
+                            </div>
                             <template x-for="(w, index) in workExperience" :key="index">
                                 <div class="border p-4 rounded bg-gray-50/50 space-y-4">
                                     <div class="flex justify-between">
@@ -354,10 +465,15 @@
 
                         <!-- Step 9: Voluntary Work -->
                         <div x-show="step === 9" class="space-y-6">
-                                <h2 class="text-xl font-semibold border-b pb-2 flex justify-between">
-                                <span>IX. Voluntary Work</span>
-                                <button type="button" @click="addVoluntary()" class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ Add</button>
-                            </h2>
+                                <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">IX. Voluntary Work</h2>
+                                        <p class="text-sm text-gray-600 mt-1">Volunteer work and community service</p>
+                                    </div>
+                                    <button type="button" @click="addVoluntary()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium">+ Add</button>
+                                </div>
+                            </div>
                             <template x-for="(v, index) in voluntaryWork" :key="index">
                                     <div class="border p-4 rounded bg-gray-50/50 space-y-4">
                                     <div class="flex justify-between">
@@ -379,10 +495,15 @@
 
                         <!-- Step 10: Learning -->
                         <div x-show="step === 10" class="space-y-6">
-                                <h2 class="text-xl font-semibold border-b pb-2 flex justify-between">
-                                <span>X. Learning & Development</span>
-                                <button type="button" @click="addLearning()" class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded hover:bg-blue-200">+ Add</button>
-                            </h2>
+                                <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">X. Learning & Development</h2>
+                                        <p class="text-sm text-gray-600 mt-1">Training programs and seminars attended</p>
+                                    </div>
+                                    <button type="button" @click="addLearning()" class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all text-sm font-medium">+ Add</button>
+                                </div>
+                            </div>
                             <template x-for="(l, index) in learning" :key="index">
                                     <div class="border p-4 rounded bg-gray-50/50 space-y-4">
                                     <div class="flex justify-between">
@@ -405,7 +526,10 @@
 
                         <!-- Step 11: Other Information -->
                         <div x-show="step === 11" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">XI. Other Information</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">XI. Other Information</h2>
+                                <p class="text-sm text-gray-600 mt-1">Skills, hobbies, and memberships</p>
+                            </div>
                             <div class="space-y-6">
                                 <div><label class="block text-sm font-medium">Special Skills and Hobbies</label><textarea name="other_info[skills]" x-model="other_info.skills" rows="3" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></textarea></div>
                                 <div><label class="block text-sm font-medium">Non-Academic Distinctions/Recognitions</label><textarea name="other_info[recognitions]" x-model="other_info.recognitions" rows="3" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></textarea></div>
@@ -415,7 +539,10 @@
 
                         <!-- Step 12: Declarations -->
                         <div x-show="step === 12" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">XII. Declarations</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">XII. Declarations</h2>
+                                <p class="text-sm text-gray-600 mt-1">Required declarations and disclosures</p>
+                            </div>
                             <div class="space-y-4">
                                 <template x-for="(decl, index) in declarations" :key="index">
                                     <div class="border p-4 rounded mb-4">
@@ -433,8 +560,10 @@
 
                         <!-- Step 13: References -->
                         <div x-show="step === 13" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">XIII. References</h2>
-                            <p class="text-xs text-gray-500">Title, Full Name, Address, and Tel. No. of 3 persons not related to you.</p>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">XIII. References</h2>
+                                <p class="text-sm text-gray-600 mt-1">Character references (3 persons not related to you)</p>
+                            </div>
                             <template x-for="(ref, index) in references" :key="index">
                                 <div class="border p-4 rounded bg-gray-50/50 mb-4">
                                     <div class="grid grid-cols-1 gap-4">
@@ -448,7 +577,10 @@
 
                         <!-- Step 14: Government ID -->
                         <div x-show="step === 14" class="space-y-6">
-                            <h2 class="text-xl font-semibold border-b pb-2">XIV. Government ID</h2>
+                            <div class="bg-gradient-to-r from-purple-50 to-blue-50 -m-8 mb-6 p-6 rounded-t-2xl border-b border-gray-200">
+                                <h2 class="text-2xl font-bold text-gray-900" style="font-family: 'Poppins', sans-serif;">XIV. Government ID</h2>
+                                <p class="text-sm text-gray-600 mt-1">Government-issued identification and photo</p>
+                            </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <input type="hidden" name="photo" x-model="photo">
                                 <div class="col-span-2 flex items-center gap-6 mb-4">
