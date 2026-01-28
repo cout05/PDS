@@ -4,7 +4,6 @@
         <p class="text-sm text-gray-600 mt-1">Residential and permanent address information</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Residential -->
         <div class="space-y-4 border p-4 rounded bg-gray-50/50">
             <h3 class="font-medium text-lg">Residential Address</h3>
             <div class="grid grid-cols-2 gap-4">
@@ -33,7 +32,6 @@
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
             </div>
         </div>
-        <!-- Permanent -->
         <div class="space-y-4 border p-4 rounded bg-gray-50/50">
             <h3 class="font-medium text-lg">Permanent Address</h3>
             <div class="grid grid-cols-2 gap-4">

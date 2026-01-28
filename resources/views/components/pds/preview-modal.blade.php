@@ -10,7 +10,6 @@
             <div class="flex-1 overflow-auto p-8 bg-gray-100">
                 <div class="bg-white p-8 shadow-sm mx-auto" style="width: 8.5in; min-height: 13in;">
                     <style>
-                        /* Scoped Styles for PDS Preview */
                         #pds-preview-content {
                             font-family: Arial, sans-serif;
                             font-size: 10pt;

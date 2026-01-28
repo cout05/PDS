@@ -184,8 +184,7 @@
                         <div style="width: 100%;"><input type="text" class="input-text"
                                 :value="permanent_address.province" readonly style="text-align: center;"></div>
                         <div class="small">Barangay</div>
-                        <!-- Note: index.html label says Barangay here too, should likely be Province or it's just the label -->
-                    </div>
+  </div>
                 </div>
             </td>
         </tr>
