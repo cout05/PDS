@@ -257,64 +257,103 @@
             }
         },
         fillMockData() {
-            this.surname = 'DELA CRUZ';
-            this.first_name = 'JUAN';
-            this.middle_name = 'PINEDA';
-            this.name_extension = 'JR';
-            this.date_of_birth = '1990-01-01';
-            this.place_of_birth = 'MANILA';
-            this.sex = 'Male';
-            this.civil_status = 'Married';
+            const firstNames = ['JUAN', 'PEDRO', 'MARIA', 'JOSE', 'ANA', 'LUIS', 'CARLO', 'MICHAEL', 'ANGEL', 'JESSICA'];
+            const lastNames = ['DELA CRUZ', 'SANTOS', 'REYES', 'GARCIA', 'RAMOS', 'TORRES', 'FLORES', 'PEREZ', 'TAN', 'LIM'];
+            const middleNames = ['PINEDA', 'CRUZ', 'DIZON', 'MENDOZA', 'CASTRO', 'BAUTISTA', 'OCAMPO', 'AQUINO'];
+            const cities = ['MANILA', 'QUEZON CITY', 'MAKATI', 'TAGUIG', 'PASIG', 'CEBU', 'DAVAO'];
+            const provinces = ['METRO MANILA', 'CEBU', 'DAVAO DEL SUR', 'CAVITE', 'LAGUNA', 'BULACAN'];
+            
+            const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+            const randNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+            
+            this.surname = rand(lastNames);
+            this.first_name = rand(firstNames);
+            this.middle_name = rand(middleNames);
+            this.name_extension = Math.random() > 0.7 ? rand(['JR', 'SR', 'III']) : 'N/A';
+            this.date_of_birth = `19${randNum(70, 99)}-${String(randNum(1, 12)).padStart(2,'0')}-${String(randNum(1, 28)).padStart(2,'0')}`;
+            this.place_of_birth = rand(cities);
+            this.sex = Math.random() > 0.5 ? 'Male' : 'Female';
+            this.civil_status = rand(['Single', 'Married', 'Widowed', 'Separated']);
             this.citizenship = 'Filipino';
-            this.height_m = '1.75';
-            this.weight_kg = '70';
-            this.blood_type = 'O+';
-            this.umid_no = '12-3456789-0';
-            this.pagibig_no = '1234-5678-9012';
-            this.philhealth_no = '12-345678901-2';
-            this.psn = '123-456-789';
-            this.tin_no = '123-456-789-000';
-            this.agency_employee_no = 'EMP-001';
-            this.telephone_no = '123-4567';
-            this.mobile_no = '0912-345-6789';
-            this.email = 'juan.delacruz@example.com';
+            this.height_m = (randNum(150, 190) / 100).toFixed(2);
+            this.weight_kg = randNum(50, 90);
+            this.blood_type = rand(['O+', 'A+', 'B+', 'AB+']);
+            this.umid_no = `${randNum(10,99)}-${randNum(1000000,9999999)}-${randNum(0,9)}`;
+            this.pagibig_no = `${randNum(1000,9999)}-${randNum(1000,9999)}-${randNum(1000,9999)}`;
+            this.philhealth_no = `${randNum(10,99)}-${randNum(100000000,999999999)}-${randNum(0,9)}`;
+            this.psn = `${randNum(10,99)}-${randNum(1000000,9999999)}-${randNum(0,9)}`;
+            this.tin_no = `${randNum(100,999)}-${randNum(100,999)}-${randNum(100,999)}-000`;
+            this.agency_employee_no = `EMP-${randNum(100,999)}`;
+            this.telephone_no = `${randNum(100,999)}-${randNum(1000,9999)}`;
+            this.mobile_no = `09${randNum(10,99)}-${randNum(100,999)}-${randNum(1000,9999)}`;
+            this.email = `${this.first_name.toLowerCase()}.${this.surname.toLowerCase().replace(' ', '')}@example.com`;
             
-            this.residential_address = {house_no: '123', street: 'MAYSILO', subdivision: 'VERVILLE', barangay: 'PLAINVIEW', city: 'MANDALUYONG', province: 'METRO MANILA', zipcode: '1550'};
-            this.permanent_address = {house_no: '123', street: 'MAYSILO', subdivision: 'VERVILLE', barangay: 'PLAINVIEW', city: 'MANDALUYONG', province: 'METRO MANILA', zipcode: '1550'};
+            const addr = {
+                house_no: String(randNum(1, 999)),
+                street: rand(['MAYSILO', 'RIZAL', 'BONIFACIO', 'MABINI', 'LUNA']),
+                subdivision: rand(['VERVILLE', 'CAMELLA', 'LUMINA', 'DECA']),
+                barangay: rand(['PLAINVIEW', 'POBLACION', 'SAN ISIDRO', 'SAN JOSE']),
+                city: rand(cities),
+                province: rand(provinces),
+                zipcode: String(randNum(1000, 9000))
+            };
+
+            this.residential_address = { ...addr };
+            this.permanent_address = { ...addr };
             
-            this.spouse = {surname: 'DELA CRUZ', first_name: 'MARIA', middle_name: 'SANTOS', name_extension: 'II', occupation: 'TEACHER', employer: 'DEPED', business_address: 'MANILA', telephone_no: '765-4321'};
-            this.father = {surname: 'DELA CRUZ', first_name: 'PEDRO', middle_name: 'PINEDA', name_extension: 'SR'};
-            this.mother = {surname: 'PINEDA', first_name: 'ANA', middle_name: 'REYES'};
+            this.spouse = {
+                surname: rand(lastNames), 
+                first_name: rand(firstNames), 
+                middle_name: rand(middleNames), 
+                name_extension: Math.random() > 0.8 ? 'II' : '', 
+                occupation: rand(['TEACHER', 'ENGINEER', 'DOCTOR', 'NURSE', 'ACCOUNTANT']), 
+                employer: rand(['DEPED', 'DPWH', 'DOH', 'GOV']), 
+                business_address: rand(cities), 
+                telephone_no: `${randNum(100,999)}-${randNum(1000,9999)}`
+            };
+            this.father = {
+                surname: this.surname, 
+                first_name: rand(firstNames), 
+                middle_name: rand(middleNames), 
+                name_extension: Math.random() > 0.8 ? 'SR' : ''
+            };
+            this.mother = {
+                surname: rand(lastNames), 
+                first_name: rand(firstNames), 
+                middle_name: rand(middleNames)
+            };
             
-            this.children = [{full_name: 'JUAN DELA CRUZ II', date_of_birth: '2015-05-15'}];
-            
-            this.education = [
-                {level: 'Elementary', school_name: 'MANILA ELEMENTARY', degree_course: 'PRIMARY', from_year: '1996', to_year: '2002', highest_level: 'GRADUATED', year_graduated: '2002', honors: 'NONE'},
-                {level: 'College', school_name: 'UP MANILA', degree_course: 'BS COMPUTER SCIENCE', from_year: '2006', to_year: '2010', highest_level: 'GRADUATED', year_graduated: '2010', honors: 'CUM LAUDE'}
+            this.children = [
+                {full_name: `${rand(firstNames)} ${this.surname}`, date_of_birth: `20${randNum(10, 24)}-${String(randNum(1, 12)).padStart(2,'0')}-${String(randNum(1, 28)).padStart(2,'0')}`}
             ];
             
-            this.civilService = [{eligibility_type: 'PROFESSIONAL', rating: '85.5', exam_date: '2011-03-15', exam_place: 'MANILA', license_no: '123456', valid_from: '', valid_to: '2026-03-15'}];
+            this.education = [
+                {level: 'Elementary', school_name: `${rand(cities)} ELEMENTARY`, degree_course: 'PRIMARY', from_year: '1996', to_year: '2002', highest_level: 'GRADUATED', year_graduated: '2002', honors: 'NONE'},
+                {level: 'College', school_name: `UNIV OF ${rand(cities)}`, degree_course: rand(['BS COMPUTER SCIENCE', 'BS NURSING', 'BS ACCOUNTANCY']), from_year: '2006', to_year: '2010', highest_level: 'GRADUATED', year_graduated: '2010', honors: rand(['CUM LAUDE', 'NONE', 'MAGNA CUM LAUDE'])}
+            ];
             
-            this.workExperience = [{date_from: '2010-06-01', date_to: '2023-12-31', position_title: 'DEVELOPER', agency: 'GOV TECH', appointment_status: 'PERMANENT', gov_service: 'Y'}];
+            this.civilService = [{eligibility_type: 'PROFESSIONAL', rating: String(randNum(75, 95)), exam_date: '2011-03-15', exam_place: rand(cities), license_no: String(randNum(100000, 999999)), valid_from: '', valid_to: '2026-03-15'}];
+            
+            this.workExperience = [{date_from: '2010-06-01', date_to: '2023-12-31', position_title: rand(['DEVELOPER', 'NURSE', 'CLERK', 'OFFICER']), agency: rand(['GOV TECH', 'DOH', 'LGU', 'DEPED']), appointment_status: rand(['PERMANENT', 'CONTRACTUAL']), gov_service: 'Y'}];
             
             this.voluntaryWork = [{organization: 'RED CROSS', date_from: '2012-01-01', date_to: '2015-12-31', hours: '120', position: 'VOLUNTEER'}];
             
-            this.learning = [{title: 'ADVANCED PHPC', date_from: '2020-01-01', date_to: '2020-01-05', hours: '40', type: 'TECHNICAL', conducted_by: 'DICT'}];
+            this.learning = [{title: rand(['ADVANCED EXCEL', 'PUBLIC MANAGEMENT', 'LEADERSHIP TRAINING']), date_from: '2020-01-01', date_to: '2020-01-05', hours: String(randNum(8, 40)), type: rand(['MANAGERIAL', 'TECHNICAL']), conducted_by: 'CSC'}];
             
-            this.other_info = {skills: 'CODING, DRIVING', recognitions: 'BEST EMPLOYEE', memberships: 'PSA'};
+            this.other_info = {skills: rand(['CODING', 'DRIVING', 'TEACHING']), recognitions: rand(['BEST EMPLOYEE', 'MODEL EMPLOYEE']), memberships: rand(['PSA', 'PICE', 'PICPA'])};
             
             this.declarations.forEach(d => {
-                d.answer = 'No';
-                d.details = '';
+                d.answer = Math.random() > 0.9 ? 'Yes' : 'No';
+                d.details = d.answer === 'Yes' ? 'SAMPLE DETAILS' : '';
             });
             
             this.references = [
-                {name: 'RICARDO SANTOS', address: 'QUEZON CITY', contact: '0917-000-0001'},
-                {name: 'TERESA GARCIA', address: 'MAKATI CITY', contact: '0917-000-0002'},
-                {name: 'JOSE RIZAL', address: 'LAGUNA', contact: '0917-000-0003'}
+                {name: `${rand(firstNames)} ${rand(lastNames)}`, address: rand(cities), contact: `09${randNum(10,99)}-${randNum(100,999)}-${randNum(1000,9999)}`},
+                {name: `${rand(firstNames)} ${rand(lastNames)}`, address: rand(cities), contact: `09${randNum(10,99)}-${randNum(100,999)}-${randNum(1000,9999)}`},
+                {name: `${rand(firstNames)} ${rand(lastNames)}`, address: rand(cities), contact: `09${randNum(10,99)}-${randNum(100,999)}-${randNum(1000,9999)}`}
             ];
             
-            this.government_id = {id_type: 'PASSPORT', id_number: 'P1234567A', place_issued: 'DFA MANILA'};
+            this.government_id = {id_type: rand(['PASSPORT', 'DRIVER LICENSE', 'GSIS UMID']), id_number: String(randNum(1000000, 9999999)), place_issued: rand(cities)};
         }
     }" x-cloak>
 
