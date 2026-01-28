@@ -24,7 +24,7 @@
         residential_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         permanent_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         spouse: {surname: '', first_name: '', middle_name: '', name_extension: '', occupation: '', employer: '', business_address: '', telephone_no: ''},
-        father: {surname: '', first_name: '', middle_name: ''},
+        father: {surname: '', first_name: '', middle_name: '', name_extension: ''},
         mother: {surname: '', first_name: '', middle_name: ''},
         other_info: {skills: '', recognitions: '', memberships: ''},
         government_id: {id_type: '', id_number: '', place_issued: ''},
@@ -115,8 +115,8 @@
             this.residential_address = {house_no: '123', street: 'MAYSILO', subdivision: 'VERVILLE', barangay: 'PLAINVIEW', city: 'MANDALUYONG', province: 'METRO MANILA', zipcode: '1550'};
             this.permanent_address = {house_no: '123', street: 'MAYSILO', subdivision: 'VERVILLE', barangay: 'PLAINVIEW', city: 'MANDALUYONG', province: 'METRO MANILA', zipcode: '1550'};
             
-            this.spouse = {surname: 'DELA CRUZ', first_name: 'MARIA', middle_name: 'SANTOS', name_extension: '', occupation: 'TEACHER', employer: 'DEPED', business_address: 'MANILA', telephone_no: '765-4321'};
-            this.father = {surname: 'DELA CRUZ', first_name: 'PEDRO', middle_name: 'PINEDA'};
+            this.spouse = {surname: 'DELA CRUZ', first_name: 'MARIA', middle_name: 'SANTOS', name_extension: 'II', occupation: 'TEACHER', employer: 'DEPED', business_address: 'MANILA', telephone_no: '765-4321'};
+            this.father = {surname: 'DELA CRUZ', first_name: 'PEDRO', middle_name: 'PINEDA', name_extension: 'SR'};
             this.mother = {surname: 'PINEDA', first_name: 'ANA', middle_name: 'REYES'};
             
             this.children = [{full_name: 'JUAN DELA CRUZ II', date_of_birth: '2015-05-15'}];
