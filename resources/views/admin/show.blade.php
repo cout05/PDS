@@ -132,7 +132,8 @@
                     font-size: 9pt;
                     font-family: 'Courier New', monospace;
                     color: #000;
-                    text-align: center;
+                    text-align: left;
+                    padding-left: 5px;
                 }
 
                 #pds-preview-content .checkbox-container {
