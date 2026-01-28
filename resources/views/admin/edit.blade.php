@@ -114,6 +114,7 @@
                 transition: all 0.2s ease !important;
                 padding: 0.625rem 0.875rem !important;
                 font-size: 0.9375rem !important;
+                text-transform: uppercase !important;
             }
 
             input[type="text"]:hover,
@@ -461,8 +462,8 @@
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div class="flex gap-2">
-                                            <div class="flex-1"><label class="block text-xs uppercase text-gray-500">From</label><input type="date" :name="'work_experience['+index+'][date_from]'" x-model="w.date_from" class="w-full rounded border-gray-300 sm:text-sm"></div>
-                                            <div class="flex-1"><label class="block text-xs uppercase text-gray-500">To</label><input type="date" :name="'work_experience['+index+'][date_to]'" x-model="w.date_to" class="w-full rounded border-gray-300 sm:text-sm"></div>
+                                            <div class="flex-1"><label class="block text-xs uppercase text-gray-500">From</label><input type="text" :name="'work_experience['+index+'][date_from]'" x-model="w.date_from" placeholder="MM/DD/YYYY" class="w-full rounded border-gray-300 sm:text-sm"></div>
+                                            <div class="flex-1"><label class="block text-xs uppercase text-gray-500">To</label><input type="text" :name="'work_experience['+index+'][date_to]'" x-model="w.date_to" placeholder="MM/DD/YYYY" class="w-full rounded border-gray-300 sm:text-sm"></div>
                                         </div>
                                         <div><label class="block text-xs uppercase text-gray-500">Position Title</label><input type="text" :name="'work_experience['+index+'][position_title]'" x-model="w.position_title" class="w-full rounded border-gray-300 sm:text-sm"></div>
                                         <div><label class="block text-xs uppercase text-gray-500">Agency/Company</label><input type="text" :name="'work_experience['+index+'][agency]'" x-model="w.agency" class="w-full rounded border-gray-300 sm:text-sm"></div>

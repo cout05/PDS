@@ -34,7 +34,7 @@
         </tr>
         <tr>
             <th colspan="2">3. DATE OF BIRTH<br>(dd/mm/yyyy)</th>
-            <td colspan="2"><input type="text" class="input-text" :value="date_of_birth" readonly></td>
+            <td colspan="2"><input type="text" class="input-text" :value="formatDate(date_of_birth)" readonly></td>
             <th rowspan="1" style="border-bottom: none;">16. CITIZENSHIP</th>
             <td rowspan="2">
                 <div style="display: flex; align-items: start; gap: 10%;">
@@ -246,7 +246,7 @@
                 <div><input type="text" class="input-text" :value="getChild(0).full_name" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(0).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(0).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -258,7 +258,7 @@
                 <div><input type="text" class="input-text" :value="getChild(1).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(1).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(1).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -270,7 +270,7 @@
                 <div><input type="text" class="input-text" :value="getChild(2).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(2).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(2).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -282,7 +282,7 @@
                 <div><input type="text" class="input-text" :value="getChild(3).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(3).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(3).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -294,7 +294,7 @@
                 <div><input type="text" class="input-text" :value="getChild(4).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(4).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(4).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -306,7 +306,7 @@
                 <div><input type="text" class="input-text" :value="getChild(5).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(5).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(5).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -318,7 +318,7 @@
                 <div><input type="text" class="input-text" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="father.date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(father.date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -334,7 +334,7 @@
                 <div><input type="text" class="input-text" :value="getChild(6).full_name" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="getChild(6).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(6).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -346,7 +346,7 @@
                 <div><input type="text" class="input-text" :value="getChild(7).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(7).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(7).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -358,7 +358,7 @@
                 <div><input type="text" class="input-text" readonly></div>
             </td>
             <td style="text-align: center;">
-                <div><input type="text" class="input-text" :value="mother.date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(mother.date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -368,7 +368,7 @@
                 <div><input type="text" class="input-text" :value="getChild(8).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(8).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(8).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -378,7 +378,7 @@
                 <div><input type="text" class="input-text" :value="getChild(9).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(9).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(9).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>
@@ -388,7 +388,7 @@
                 <div><input type="text" class="input-text" :value="getChild(10).full_name" readonly></div>
             </td>
             <td>
-                <div><input type="text" class="input-text" :value="getChild(10).date_of_birth" readonly></div>
+                <div><input type="text" class="input-text" :value="formatDate(getChild(10).date_of_birth)" readonly></div>
             </td>
         </tr>
         <tr>

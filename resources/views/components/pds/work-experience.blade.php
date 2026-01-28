@@ -21,10 +21,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="flex gap-2">
                     <div class="flex-1"><label class="block text-xs uppercase text-gray-500">From</label><input
-                            type="date" :name="'work_experience['+index+'][date_from]'" x-model="w.date_from"
+                            type="text" :name="'work_experience['+index+'][date_from]'" x-model="w.date_from"
+                            placeholder="MM/DD/YYYY"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
                     <div class="flex-1"><label class="block text-xs uppercase text-gray-500">To</label><input
-                            type="date" :name="'work_experience['+index+'][date_to]'" x-model="w.date_to"
+                            type="text" :name="'work_experience['+index+'][date_to]'" x-model="w.date_to"
+                            placeholder="MM/DD/YYYY"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>
                 </div>
                 <div><label class="block text-xs uppercase text-gray-500">Position Title</label><input type="text"

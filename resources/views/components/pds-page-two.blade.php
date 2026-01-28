@@ -28,20 +28,20 @@
     <div class="section-header">V. WORK EXPERIENCE <br>(Include private employment. Start from your recent work) Description of duties should be indicated in the attached Work Experience sheet.</div>
     <table>
         <tr>
-            <th colspan="2" style="width: 5%;">INCLUSIVE DATES (mm/dd/yyyy)</th>
+            <th colspan="2" style="width: 18%;">INCLUSIVE DATES (mm/dd/yyyy)</th>
             <th rowspan="2" style="width: 15%;">POSITION TITLE (Write in full/Do not abbreviate)</th>
             <th rowspan="2" style="width: 20%;">DEPARTMENT / AGENCY / OFFICE / COMPANY (Write in full/Do not abbreviate)</th>
             <th rowspan="2" style="width: 20%;">STATUS OF APPOINTMENT</th>
             <th rowspan="2" style="width: 5%;">GOV'T SERVICE (Y/ N)</th>
         </tr>
         <tr>
-            <th style="width: 7%;">From</th>
-            <th style="width: 7%;">To</th>
+            <th style="width: 9%;">From</th>
+            <th style="width: 9%;">To</th>
         </tr>
         @for ($i = 0; $i < 28; $i++)
         <tr>
-            <td><input type="text" class="input-text" :value="getWork({{ $i }}).date_from" readonly></td>
-            <td><input type="text" class="input-text" :value="getWork({{ $i }}).date_to" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getWork({{ $i }}).date_from)" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getWork({{ $i }}).date_to)" readonly></td>
             <td><input type="text" class="input-text" :value="getWork({{ $i }}).position_title" readonly></td>
             <td><input type="text" class="input-text" :value="getWork({{ $i }}).agency" readonly></td>
             <td><input type="text" class="input-text" :value="getWork({{ $i }}).appointment_status" readonly></td>
