@@ -1,5 +1,5 @@
 <div class="w-full md:w-72 shrink-0">
-    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 sticky top-24 border border-white/20">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 border border-white/20">
         <h3 class="text-lg font-bold text-gray-900 mb-4 px-2" style="font-family: 'Poppins', sans-serif;">Form Sections
         </h3>
         <nav class="space-y-1">

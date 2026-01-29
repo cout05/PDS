@@ -14,8 +14,8 @@
         @for ($i = 0; $i < 7; $i++)
         <tr>
             <td><input type="text" class="input-text" :value="getVol({{ $i }}).organization" readonly></td>
-            <td><input type="text" class="input-text" :value="getVol({{ $i }}).date_from" readonly></td>
-            <td><input type="text" class="input-text" :value="getVol({{ $i }}).date_to" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getVol({{ $i }}).date_from)" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getVol({{ $i }}).date_to)" readonly></td>
             <td><input type="text" class="input-text" :value="getVol({{ $i }}).hours" readonly></td>
             <td><input type="text" class="input-text" :value="getVol({{ $i }}).position" readonly></td>
         </tr>
@@ -39,8 +39,8 @@
         @for ($i = 0; $i < 20; $i++)
         <tr>
             <td><input type="text" class="input-text" :value="getLearn({{ $i }}).title" readonly></td>
-            <td><input type="text" class="input-text" :value="getLearn({{ $i }}).date_from" readonly></td>
-            <td><input type="text" class="input-text" :value="getLearn({{ $i }}).date_to" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getLearn({{ $i }}).date_from)" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getLearn({{ $i }}).date_to)" readonly></td>
             <td><input type="text" class="input-text" :value="getLearn({{ $i }}).hours" readonly></td>
             <td><input type="text" class="input-text" :value="getLearn({{ $i }}).type" readonly></td>
             <td><input type="text" class="input-text" :value="getLearn({{ $i }}).conducted_by" readonly></td>

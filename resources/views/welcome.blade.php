@@ -167,7 +167,7 @@
         step: 1, 
         maxStep: 14,
         showPreview: false,
-        surname:     '', first_name: '', middle_name: '', name_extension: '', date_of_birth: '', place_of_birth: '', sex: 'Male', civil_status: 'Single', citizenship: 'Filipino', height_m: '', weight_kg: '', blood_type: '', umid_no: '', pagibig_no: '', philhealth_no: '', psn: '', tin_no: '', agency_employee_no: '', telephone_no: '', mobile_no: '', email: '', photo: '',
+        surname:     '', first_name: '', middle_name: '', name_extension: '', date_of_birth: '', place_of_birth: '', sex: 'Male', civil_status: 'Single', citizenship: 'Filipino', dual_citizenship_type: '', dual_citizenship_country: '', height_m: '', weight_kg: '', blood_type: '', umid_no: '', pagibig_no: '', philhealth_no: '', psn: '', tin_no: '', agency_employee_no: '', telephone_no: '', mobile_no: '', email: '', photo: '',
         residential_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         permanent_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         spouse: {surname: '', first_name: '', middle_name: '', name_extension: '', occupation: '', employer: '', business_address: '', telephone_no: ''},
@@ -292,7 +292,17 @@
             this.place_of_birth = rand(cities);
             this.sex = Math.random() > 0.5 ? 'Male' : 'Female';
             this.civil_status = rand(['Single', 'Married', 'Widowed', 'Separated']);
-            this.citizenship = 'Filipino';
+            
+            // Citizenship with dual citizenship mock data
+            const isDualCitizen = Math.random() > 0.7; // 30% chance of dual citizenship
+            this.citizenship = isDualCitizen ? 'Dual' : 'Filipino';
+            if (isDualCitizen) {
+                this.dual_citizenship_type = rand(['By Birth', 'By Naturalization']);
+                this.dual_citizenship_country = rand(['USA', 'CANADA', 'AUSTRALIA', 'JAPAN', 'SINGAPORE', 'UK', 'SPAIN']);
+            } else {
+                this.dual_citizenship_type = '';
+                this.dual_citizenship_country = '';
+            }
             this.height_m = (randNum(150, 190) / 100).toFixed(2);
             this.weight_kg = randNum(50, 90);
             this.blood_type = rand(['O+', 'A+', 'B+', 'AB+']);
@@ -501,6 +511,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Auto-convert inputs to uppercase (except email)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('input', function(e) {
+                const target = e.target;
+                
+                // Check if it's a text input or textarea, but not an email input
+                if ((target.tagName === 'INPUT' && target.type === 'text') || target.tagName === 'TEXTAREA') {
+                    // Exclude email inputs
+                    if (target.name && !target.name.toLowerCase().includes('email') && 
+                        target.type !== 'email') {
+                        const start = target.selectionStart;
+                        const end = target.selectionEnd;
+                        target.value = target.value.toUpperCase();
+                        target.setSelectionRange(start, end);
+                        
+                        // Trigger Alpine.js update if it's bound with x-model
+                        target.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

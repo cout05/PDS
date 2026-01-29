@@ -44,12 +44,14 @@
                         <label class="checkbox-container"><input type="checkbox" :checked="citizenship === 'Dual'"
                                 onclick="return false;">Dual Citizenship</label>
                         <div style="margin-top: 5px; display: flex; gap: 20px;">
-                            <label class="checkbox-container"><input type="checkbox" onclick="return false;">By
+                            <label class="checkbox-container"><input type="checkbox" :checked="dual_citizenship_type === 'By Birth'" onclick="return false;">By
                                 Birth</label>
-                            <label class="checkbox-container"><input type="checkbox" onclick="return false;">By
+                            <label class="checkbox-container"><input type="checkbox" :checked="dual_citizenship_type === 'By Naturalization'" onclick="return false;">By
                                 naturalization</label>
                         </div>
-                        <div style="margin-top: 5px;">Pls. indicate country:</div>
+                        <div style="margin-top: 5px;">
+                            <span>Pls. indicate country:</span>
+                        </div>
                     </div>
                 </div>
             </td>
@@ -72,7 +74,7 @@
             </td>
             <td style="font-size: 8px; background-color: #f0f0f0; border-top: none; text-align: center;">please indicate
                 the details.</td>
-            <td><input type="text" class="input-text"></td>
+            <td><input type="text" class="input-text" :value="dual_citizenship_country" readonly></td>
         </tr>
         <tr>
             <th colspan="2">6 CIVIL STATUS</th>

@@ -16,10 +16,10 @@
         <tr>
             <td><input type="text" class="input-text" :value="getCS({{ $i }}).eligibility_type" readonly></td>
             <td><input type="text" class="input-text" :value="getCS({{ $i }}).rating" readonly></td>
-            <td><input type="text" class="input-text" :value="getCS({{ $i }}).exam_date" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getCS({{ $i }}).exam_date)" readonly></td>
             <td><input type="text" class="input-text" :value="getCS({{ $i }}).exam_place" readonly></td>
             <td><input type="text" class="input-text" :value="getCS({{ $i }}).license_no" readonly></td>
-            <td><input type="text" class="input-text" :value="getCS({{ $i }}).valid_to" readonly></td>
+            <td><input type="text" class="input-text" :value="formatDate(getCS({{ $i }}).valid_to)" readonly></td>
         </tr>
         @endfor
         <th colspan="8" style="text-align: center; color: red;">continue on seperate sheet if necessary</th>
