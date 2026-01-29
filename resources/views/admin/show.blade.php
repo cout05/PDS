@@ -31,6 +31,8 @@
                 sex: {{ Js::from($submission->sex) }},
                 civil_status: {{ Js::from($submission->civil_status) }},
                 citizenship: {{ Js::from($submission->citizenship) }},
+                dual_citizenship_type: {{ Js::from($submission->dual_citizenship_type) }},
+                dual_citizenship_country: {{ Js::from($submission->dual_citizenship_country) }},
                 height_m: {{ Js::from($submission->height_m) }},
                 weight_kg: {{ Js::from($submission->weight_kg) }},
                 blood_type: {{ Js::from($submission->blood_type) }},

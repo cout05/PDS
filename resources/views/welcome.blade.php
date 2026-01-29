@@ -61,95 +61,103 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        
+        /* Enhanced Input Styling */
+        input[type="text"]:not(#pds-preview-content input),
+        input[type="email"]:not(#pds-preview-content input),
+        input[type="tel"]:not(#pds-preview-content input),
+        input[type="date"]:not(#pds-preview-content input),
+        input[type="number"]:not(#pds-preview-content input),
+        input[type="file"]:not(#pds-preview-content input),
+        select:not(#pds-preview-content select),
+        textarea:not(#pds-preview-content textarea) {
+            border: 2px solid #e5e7eb !important;
+            background: #ffffff !important;
+            transition: all 0.2s ease !important;
+            padding: 0.625rem 0.875rem !important;
+            font-size: 0.9375rem !important;
+        }
 
-            /* Enhanced Input Styling */
-            input[type="text"]:not(#pds-preview-content input),
-            input[type="email"]:not(#pds-preview-content input),
-            input[type="tel"]:not(#pds-preview-content input),
-            input[type="date"]:not(#pds-preview-content input),
-            input[type="number"]:not(#pds-preview-content input),
-            input[type="file"]:not(#pds-preview-content input),
-            select:not(#pds-preview-content select),
-            textarea:not(#pds-preview-content textarea) {
-                border: 2px solid #e5e7eb !important;
-                background: #ffffff !important;
-                transition: all 0.2s ease !important;
-                padding: 0.625rem 0.875rem !important;
-                font-size: 0.9375rem !important;
-            }
+        /* Remove default select arrow */
+        select:not(#pds-preview-content select) {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
 
-            input[type="text"]:not(#pds-preview-content input):hover,
-            input[type="email"]:not(#pds-preview-content input):hover,
-            input[type="tel"]:not(#pds-preview-content input):hover,
-            input[type="date"]:not(#pds-preview-content input):hover,
-            input[type="number"]:not(#pds-preview-content input):hover,
-            select:not(#pds-preview-content select):hover,
-            textarea:not(#pds-preview-content textarea):hover {
-                border-color: #c7d2fe !important;
-                background: #fafbff !important;
-            }
+        input[type="text"]:not(#pds-preview-content input):hover,
+        input[type="email"]:not(#pds-preview-content input):hover,
+        input[type="tel"]:not(#pds-preview-content input):hover,
+        input[type="date"]:not(#pds-preview-content input):hover,
+        input[type="number"]:not(#pds-preview-content input):hover,
+        select:not(#pds-preview-content select):hover,
+        textarea:not(#pds-preview-content textarea):hover {
+            border-color: #c7d2fe !important;
+            background: #fafbff !important;
+        }
 
-            input[type="text"]:not(#pds-preview-content input):focus,
-            input[type="email"]:not(#pds-preview-content input):focus,
-            input[type="tel"]:not(#pds-preview-content input):focus,
-            input[type="date"]:not(#pds-preview-content input):focus,
-            input[type="number"]:not(#pds-preview-content input):focus,
-            select:not(#pds-preview-content select):focus,
-            textarea:not(#pds-preview-content textarea):focus {
-                outline: none !important;
-                border-color: #8b5cf6 !important;
-                background: #ffffff !important;
-                box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
-                transform: translateY(-1px);
-            }
+        input[type="text"]:not(#pds-preview-content input):focus,
+        input[type="email"]:not(#pds-preview-content input):focus,
+        input[type="tel"]:not(#pds-preview-content input):focus,
+        input[type="date"]:not(#pds-preview-content input):focus,
+        input[type="number"]:not(#pds-preview-content input):focus,
+        select:not(#pds-preview-content select):focus,
+        textarea:not(#pds-preview-content textarea):focus {
+            outline: none !important;
+            border-color: #8b5cf6 !important;
+            background: #ffffff !important;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1) !important;
+            transform: translateY(-1px);
+        }
 
-            /* Label Styling */
-            label:not(#pds-preview-content label) {
-                color: #374151 !important;
-                font-weight: 600 !important;
-                margin-bottom: 0.375rem !important;
-                font-size: 0.875rem !important;
-            }
+        /* Label Styling */
+        label:not(#pds-preview-content label) {
+            color: #374151 !important;
+            font-weight: 600 !important;
+            margin-bottom: 0.375rem !important;
+            font-size: 0.875rem !important;
+        }
 
-            /* Select Dropdown Arrow */
-            select:not(#pds-preview-content select) {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
-                background-position: right 0.5rem center !important;
-                background-repeat: no-repeat !important;
-                background-size: 1.5em 1.5em !important;
-                padding-right: 2.5rem !important;
-            }
+        /* Select Dropdown Arrow */
+        select:not(#pds-preview-content select) {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+            background-position: right 0.5rem center !important;
+            background-repeat: no-repeat !important;
+            background-size: 1.5em 1.5em !important;
+            padding-right: 2.5rem !important;
+        }
 
-            /* Textarea specific */
-            textarea:not(#pds-preview-content textarea) {
-                min-height: 80px !important;
-                resize: vertical !important;
-            }
+        /* Textarea specific */
+        textarea:not(#pds-preview-content textarea) {
+            min-height: 80px !important;
+            resize: vertical !important;
+        }
 
-            /* Placeholder styling */
-            :not(#pds-preview-content)::placeholder {
-                color: #9ca3af !important;
-                opacity: 1 !important;
-            }
+        /* Placeholder styling */
+        :not(#pds-preview-content)::placeholder {
+            color: #9ca3af !important;
+            opacity: 1 !important;
+        }
 
-            /* Custom Scrollbar */
-            ::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
-            }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
 
-            ::-webkit-scrollbar-track {
-                background: #f1f5f9;
-            }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
 
-            ::-webkit-scrollbar-thumb {
-                background: #cbd5e1;
-                border-radius: 4px;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
 
-            ::-webkit-scrollbar-thumb:hover {
-                background: #94a3b8;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
 
@@ -160,7 +168,7 @@
         step: 1, 
         maxStep: 14,
         showPreview: false,
-        surname:     '', first_name: '', middle_name: '', name_extension: '', date_of_birth: '', place_of_birth: '', sex: 'Male', civil_status: 'Single', citizenship: 'Filipino', height_m: '', weight_kg: '', blood_type: '', umid_no: '', pagibig_no: '', philhealth_no: '', psn: '', tin_no: '', agency_employee_no: '', telephone_no: '', mobile_no: '', email: '', photo: '',
+        surname:     '', first_name: '', middle_name: '', name_extension: '', date_of_birth: '', place_of_birth: '', sex: 'Male', civil_status: 'Single', citizenship: 'Filipino', dual_citizenship_type: '', dual_citizenship_country: '', height_m: '', weight_kg: '', blood_type: '', umid_no: '', pagibig_no: '', philhealth_no: '', psn: '', tin_no: '', agency_employee_no: '', telephone_no: '', mobile_no: '', email: '', photo: '',
         residential_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         permanent_address: {house_no: '', street: '', subdivision: '', barangay: '', city: '', province: '', zipcode: ''},
         spouse: {surname: '', first_name: '', middle_name: '', name_extension: '', occupation: '', employer: '', business_address: '', telephone_no: ''},
@@ -247,7 +255,17 @@
         getVol(index) { return this.voluntaryWork[index] || {} },
         getLearn(index) { return this.learning[index] || {} },
         getRef(index) { return this.references[index] || {} },
-        formatDate(date) { return date ? new Date(date).toLocaleDateString() : '' },
+        formatDate(date) { 
+            if (!date) return '';
+            // If already in MM/DD/YYYY format, return as is
+            if (date.match(/^\d{2}\/\d{2}\/\d{4}$/)) return date;
+            // If in YYYY-MM-DD format, convert to MM/DD/YYYY
+            if (date.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                const [year, month, day] = date.split('-');
+                return `${month}/${day}/${year}`;
+            }
+            return date;
+        },
         formatDateRange(from, to) { return (from || '') + (to ? ' to ' + to : '') },
         handlePhoto(event) {
             const file = event.target.files[0];
@@ -275,7 +293,17 @@
             this.place_of_birth = rand(cities);
             this.sex = Math.random() > 0.5 ? 'Male' : 'Female';
             this.civil_status = rand(['Single', 'Married', 'Widowed', 'Separated']);
-            this.citizenship = 'Filipino';
+            
+            // Citizenship with dual citizenship mock data
+            const isDualCitizen = Math.random() > 0.7; // 30% chance of dual citizenship
+            this.citizenship = isDualCitizen ? 'Dual' : 'Filipino';
+            if (isDualCitizen) {
+                this.dual_citizenship_type = rand(['By Birth', 'By Naturalization']);
+                this.dual_citizenship_country = rand(['USA', 'CANADA', 'AUSTRALIA', 'JAPAN', 'SINGAPORE', 'UK', 'SPAIN']);
+            } else {
+                this.dual_citizenship_type = '';
+                this.dual_citizenship_country = '';
+            }
             this.height_m = (randNum(150, 190) / 100).toFixed(2);
             this.weight_kg = randNum(50, 90);
             this.blood_type = rand(['O+', 'A+', 'B+', 'AB+']);
@@ -316,14 +344,12 @@
                 surname: this.surname, 
                 first_name: rand(firstNames), 
                 middle_name: rand(middleNames), 
-                name_extension: Math.random() > 0.8 ? 'SR' : '',
-                date_of_birth: ''
+                name_extension: Math.random() > 0.8 ? 'SR' : ''
             };
             this.mother = {
                 surname: rand(lastNames), 
                 first_name: rand(firstNames), 
-                middle_name: rand(middleNames),
-                date_of_birth: ''
+                middle_name: rand(middleNames)
             };
             
             this.children = [
@@ -337,7 +363,7 @@
             
             this.civilService = [{eligibility_type: 'PROFESSIONAL', rating: String(randNum(75, 95)), exam_date: '2011-03-15', exam_place: rand(cities), license_no: String(randNum(100000, 999999)), valid_from: '', valid_to: '2026-03-15'}];
             
-            this.workExperience = [{date_from: '2010-06-01', date_to: '2023-12-31', position_title: rand(['DEVELOPER', 'NURSE', 'CLERK', 'OFFICER']), agency: rand(['GOV TECH', 'DOH', 'LGU', 'DEPED']), appointment_status: rand(['PERMANENT', 'CONTRACTUAL']), gov_service: 'Y'}];
+            this.workExperience = [{date_from: '06/01/2010', date_to: '12/31/2023', position_title: rand(['DEVELOPER', 'NURSE', 'CLERK', 'OFFICER']), agency: rand(['GOV TECH', 'DOH', 'LGU', 'DEPED']), appointment_status: rand(['PERMANENT', 'CONTRACTUAL']), gov_service: 'Y'}];
             
             this.voluntaryWork = [{organization: 'RED CROSS', date_from: '2012-01-01', date_to: '2015-12-31', hours: '120', position: 'VOLUNTEER'}];
             
@@ -357,13 +383,6 @@
             ];
             
             this.government_id = {id_type: rand(['PASSPORT', 'DRIVER LICENSE', 'GSIS UMID']), id_number: String(randNum(1000000, 9999999)), place_issued: rand(cities)};
-        },
-        formatDate(date) {
-            if (!date) return '';
-            // Handle both yyyy-mm-dd and ISO strings
-            const dateStr = date.split('T')[0].trim();
-            const parts = dateStr.split('-');
-            return parts.length === 3 ? `${parts[1]}/${parts[2]}/${parts[0]}` : date;
         }
     }" x-cloak>
 
@@ -503,6 +522,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Auto-convert inputs to uppercase (except email)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('input', function(e) {
+                const target = e.target;
+                
+                // Check if it's a text input or textarea, but not an email input
+                if ((target.tagName === 'INPUT' && target.type === 'text') || target.tagName === 'TEXTAREA') {
+                    // Exclude email inputs
+                    if (target.name && !target.name.toLowerCase().includes('email') && 
+                        target.type !== 'email') {
+                        const start = target.selectionStart;
+                        const end = target.selectionEnd;
+                        target.value = target.value.toUpperCase();
+                        target.setSelectionRange(start, end);
+                        
+                        // Trigger Alpine.js update if it's bound with x-model
+                        target.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

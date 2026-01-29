@@ -183,6 +183,30 @@
             </div>
         </footer>
     </div>
+    
+    <script>
+        // Auto-convert inputs to uppercase (except email)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('input', function(e) {
+                const target = e.target;
+                
+                // Check if it's a text input or textarea, but not an email input
+                if ((target.tagName === 'INPUT' && target.type === 'text') || target.tagName === 'TEXTAREA') {
+                    // Exclude email inputs
+                    if (target.name && !target.name.toLowerCase().includes('email') && 
+                        target.type !== 'email') {
+                        const start = target.selectionStart;
+                        const end = target.selectionEnd;
+                        target.value = target.value.toUpperCase();
+                        target.setSelectionRange(start, end);
+                        
+                        // Trigger Alpine.js update if it's bound with x-model
+                        target.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
