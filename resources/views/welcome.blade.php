@@ -11,6 +11,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         [x-cloak] {
             display: none !important;
@@ -381,30 +382,40 @@
         </div>
 
         @if(session('success'))
-            <div
-                class="mb-4 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 text-green-800 px-6 py-4 rounded-lg shadow-md animate-slide-down flex items-center gap-3">
-                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>
-                    <strong class="font-bold">Success!</strong>
-                    <span class="block sm:inline ml-2">{{ session('success') }}</span>
-                </div>
-            </div>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    confirmButtonColor: '#4F46E5',
+                });
+            </script>
         @endif
+
         @if(session('error'))
-            <div
-                class="mb-4 bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-500 text-red-800 px-6 py-4 rounded-lg shadow-md animate-slide-down flex items-center gap-3">
-                <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>
-                    <strong class="font-bold">Error!</strong>
-                    <span class="block sm:inline ml-2">{{ session('error') }}</span>
-                </div>
-            </div>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: "{{ session('error') }}",
+                    confirmButtonColor: '#4F46E5',
+                });
+            </script>
+        @endif
+
+        @if($errors->any())
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Validation Error',
+                    html: `<div style="text-align: center;">
+                        @foreach($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>`,
+                    confirmButtonColor: '#4F46E5',
+                });
+            </script>
         @endif
 
         <div class="flex flex-col md:flex-row gap-6">
