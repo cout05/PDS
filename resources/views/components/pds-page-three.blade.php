@@ -13,15 +13,6 @@
             <th style="width: 7%;">To</th>
         </tr>
         @for ($i = 0; $i < 7; $i++)
-<<<<<<< HEAD
-        <tr>
-            <td><input type="text" class="input-text" :value="getVol({{ $i }}).organization" readonly></td>
-            <td><input type="text" class="input-text" :value="formatDate(getVol({{ $i }}).date_from)" readonly></td>
-            <td><input type="text" class="input-text" :value="formatDate(getVol({{ $i }}).date_to)" readonly></td>
-            <td><input type="text" class="input-text" :value="getVol({{ $i }}).hours" readonly></td>
-            <td><input type="text" class="input-text" :value="getVol({{ $i }}).position" readonly></td>
-        </tr>
-=======
             <tr>
                 <td><textarea class="input-text" :value="getVol({{ $i }}).organization" readonly></textarea></td>
                 <td><input type="text" class="input-text" :value="formatDate(getVol({{ $i }}).date_from)" readonly></td>
@@ -29,7 +20,6 @@
                 <td><input type="text" class="input-text" :value="getVol({{ $i }}).hours" readonly></td>
                 <td><textarea class="input-text" :value="getVol({{ $i }}).position" readonly></textarea></td>
             </tr>
->>>>>>> 2a0bc891da27e4715348feff54930e414d652d77
         @endfor
         <th colspan="8" style="text-align: center; color: red;">continue on seperate sheet if necessary</th>
     </table>
@@ -49,16 +39,6 @@
             <th style="width: 7%;">To</th>
         </tr>
         @for ($i = 0; $i < 20; $i++)
-<<<<<<< HEAD
-        <tr>
-            <td><input type="text" class="input-text" :value="getLearn({{ $i }}).title" readonly></td>
-            <td><input type="text" class="input-text" :value="formatDate(getLearn({{ $i }}).date_from)" readonly></td>
-            <td><input type="text" class="input-text" :value="formatDate(getLearn({{ $i }}).date_to)" readonly></td>
-            <td><input type="text" class="input-text" :value="getLearn({{ $i }}).hours" readonly></td>
-            <td><input type="text" class="input-text" :value="getLearn({{ $i }}).type" readonly></td>
-            <td><input type="text" class="input-text" :value="getLearn({{ $i }}).conducted_by" readonly></td>
-        </tr>
-=======
             <tr>
                 <td><textarea class="input-text" :value="getLearn({{ $i }}).title" readonly></textarea></td>
                 <td><input type="text" class="input-text" :value="formatDate(getLearn({{ $i }}).date_from)" readonly></td>
@@ -67,7 +47,6 @@
                 <td><input type="text" class="input-text" :value="getLearn({{ $i }}).type" readonly></td>
                 <td><textarea class="input-text" :value="getLearn({{ $i }}).conducted_by" readonly></textarea></td>
             </tr>
->>>>>>> 2a0bc891da27e4715348feff54930e414d652d77
         @endfor
         <th colspan="8" style="text-align: center; color: red;">continue on seperate sheet if necessary</th>
     </table>
