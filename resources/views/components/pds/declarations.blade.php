@@ -4,7 +4,6 @@
         <p class="text-sm text-gray-600 mt-1">Answer all questions truthfully</p>
     </div>
     <div class="space-y-4">
-        <!-- Question 34 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">34. Are you related by consanguinity or affinity to the appointing or
                 recommending authority, or to the chief of bureau or office or to the person who has immediate
@@ -32,7 +31,6 @@
             </div>
         </div>
 
-        <!-- Question 35 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">35. a. Have you ever been found guilty of any administrative offense?
             </p>
@@ -61,7 +59,6 @@
             </div>
         </div>
 
-        <!-- Question 36 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">36. Have you ever been convicted of any crime or violation of any law,
                 decree, ordinance or regulation by any court or tribunal?</p>
@@ -76,7 +73,6 @@
             </div>
         </div>
 
-        <!-- Question 37 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">37. Have you ever been separated from the service in any of the
                 following modes: resignation, retirement, dropped from the rolls, dismissal, termination, end of term,
@@ -92,7 +88,6 @@
             </div>
         </div>
 
-        <!-- Question 38 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">38. a. Have you ever been a candidate in a national or local election
                 held within the last year (except Barangay election)?</p>
@@ -119,7 +114,6 @@
             </div>
         </div>
 
-        <!-- Question 39 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">39. Have you acquired the status of an immigrant or permanent resident
                 of another country?</p>
@@ -135,7 +129,6 @@
             </div>
         </div>
 
-        <!-- Question 40 -->
         <div class="border p-4 rounded">
             <p class="text-sm font-medium mb-2">40. Pursuant to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta
                 for Disabled Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer the

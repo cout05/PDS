@@ -15,8 +15,6 @@ class PdsController extends Controller
 
     public function store(Request $request)
     {
-        // Validation could be extensive here, but for now we'll rely on basic typing
-        // and add specific validation rules as needed.
 
         DB::beginTransaction();
 

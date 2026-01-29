@@ -2,7 +2,6 @@
 
 @section('content')
     <style>
-        /* Modern Table Styles */
         .modern-table tbody tr {
             transition: all 0.2s ease;
         }
@@ -23,9 +22,7 @@
     </style>
 
 
-    <!-- Main Content Card -->
     <div class="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl overflow-hidden border border-white/20">
-        <!-- Header -->
         <div class="px-8 py-6 bg-gradient-to-r from-purple-50 to-blue-50 border-b border-gray-200">
             <div class="flex justify-between items-center">
                 <div>
@@ -160,7 +157,6 @@
             </table>
         </div>
 
-        <!-- Pagination -->
         <div class="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-200">
             {{ $submissions->links() }}
         </div>

@@ -10,7 +10,6 @@
             <div class="flex-1 overflow-auto p-8 bg-gray-100">
                 <div class="bg-white p-8 shadow-sm mx-auto" style="width: 8.5in; min-height: 13in;">
                     <style>
-                        /* Scoped Styles for PDS Preview */
                         #pds-preview-content {
                             font-family: Arial, sans-serif;
                             font-size: 10pt;
@@ -60,14 +59,25 @@
 
                         #pds-preview-content .input-text {
                             width: 100%;
+                            height: 100%;
                             background: transparent;
                             border: none;
                             font-weight: bold;
-                            font-size: 9pt;
+                            font-size: 8pt;
                             font-family: "Courier New", monospace;
                             color: #000;
                             text-align: left;
                             padding-left: 5px;
+                            resize: none;
+                            white-space: normal;
+                            display: block;
+                            overflow: hidden;
+                            vertical-align: middle;
+                        }
+
+                        #pds-preview-content .centered-data .input-text {
+                            text-align: center;
+                            padding-left: 0;
                         }
 
                         #pds-preview-content .checkbox-container {

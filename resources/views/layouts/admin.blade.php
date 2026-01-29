@@ -20,7 +20,6 @@
             }
         }
 
-        /* Custom Animations */
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -51,14 +50,12 @@
             animation: fadeIn 0.5s ease-out;
         }
 
-        /* Glassmorphism */
         .glass {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
 
-        /* Gradient Text */
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
@@ -89,7 +86,6 @@
 
 <body class="bg-gradient-to-br from-slate-50 via-purple-50 to-blue-50 font-sans antialiased text-gray-900 min-h-screen">
     <div class="min-h-screen flex flex-col">
-        <!-- Modern Header with Gradient -->
         <header class="glass border-b border-white/20 shadow-lg no-print sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div class="flex justify-between items-center">

@@ -175,7 +175,6 @@
         <div x-data="editPdsData()" x-cloak>
 
             <div class="flex flex-col md:flex-row gap-6">
-                <!-- Modern Sidebar Navigation -->
                 <div class="w-full md:w-72 shrink-0 no-print">
                     <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 sticky top-24 border border-white/20">
                         <h3 class="text-lg font-bold text-gray-900 mb-4 px-2" style="font-family: 'Poppins', sans-serif;">Form Sections</h3>
@@ -210,7 +209,6 @@
                     </div>
                 </div>
 
-                <!-- Modern Form Area -->
                 <div class="flex-1 bg-white/80 backdrop-blur-sm p-8 shadow-xl rounded-2xl border border-white/20 font-sans">
                     <form action="{{ route('admin.update', $submission->id) }}" method="POST" novalidate>
                         @csrf
@@ -272,7 +270,6 @@
                                 <p class="text-sm text-gray-600 mt-1">Residential and permanent address information</p>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Residential -->
                                 <div class="space-y-4 border p-4 rounded bg-gray-50/50">
                                     <h3 class="font-medium text-lg">Residential Address</h3>
                                     <div class="grid grid-cols-2 gap-4">
@@ -285,7 +282,6 @@
                                         <div><label class="block text-xs uppercase text-gray-500">Zip Code</label><input type="text" name="residential_address[zipcode]" x-model="residential_address.zipcode" class="mt-1 block w-full rounded border-gray-300 shadow-sm sm:text-sm"></div>
                                     </div>
                                 </div>
-                                <!-- Permanent -->
                                 <div class="space-y-4 border p-4 rounded bg-gray-50/50">
                                     <h3 class="font-medium text-lg">Permanent Address</h3>
                                     <div class="grid grid-cols-2 gap-4">
@@ -557,7 +553,6 @@
                                 <p class="text-sm text-gray-600 mt-1">Answer all questions truthfully</p>
                             </div>
                             <div class="space-y-4">
-                                <!-- Question 34 -->
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">34. Are you related by consanguinity or affinity to the appointing or
                                         recommending authority, or to the chief of bureau or office or to the person who has immediate
@@ -585,7 +580,6 @@
                                     </div>
                                 </div>
                         
-                                <!-- Question 35 -->
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">35. a. Have you ever been found guilty of any administrative offense?
                                     </p>
@@ -614,7 +608,6 @@
                                     </div>
                                 </div>
                         
-                                <!-- Question 36 -->
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">36. Have you ever been convicted of any crime or violation of any law,
                                         decree, ordinance or regulation by any court or tribunal?</p>
@@ -629,7 +622,6 @@
                                     </div>
                                 </div>
                         
-                                <!-- Question 37 -->
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">37. Have you ever been separated from the service in any of the
                                         following modes: resignation, retirement, dropped from the rolls, dismissal, termination, end of term,
@@ -644,8 +636,7 @@
                                             placeholder="If YES, give details" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm">
                                     </div>
                                 </div>
-                        
-                                <!-- Question 38 -->
+
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">38. a. Have you ever been a candidate in a national or local election
                                         held within the last year (except Barangay election)?</p>
@@ -672,7 +663,6 @@
                                     </div>
                                 </div>
                         
-                                <!-- Question 39 -->
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">39. Have you acquired the status of an immigrant or permanent resident
                                         of another country?</p>
@@ -688,7 +678,6 @@
                                     </div>
                                 </div>
                         
-                                <!-- Question 40 -->
                                 <div class="border p-4 rounded">
                                     <p class="text-sm font-medium mb-2">40. Pursuant to: (a) Indigenous People's Act (RA 8371); (b) Magna Carta
                                         for Disabled Persons (RA 7277); and (c) Solo Parents Welfare Act of 2000 (RA 8972), please answer the
