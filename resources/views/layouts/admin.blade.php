@@ -63,6 +63,13 @@
             background-clip: text;
         }
 
+        /* Remove default select arrow */
+        select:not(#pds-preview-content select) {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;

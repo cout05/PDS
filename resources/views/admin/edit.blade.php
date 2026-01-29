@@ -24,6 +24,8 @@
                     sex: {{ Js::from(old('sex', $submission->sex)) }},
                     civil_status: {{ Js::from(old('civil_status', $submission->civil_status)) }},
                     citizenship: {{ Js::from(old('citizenship', $submission->citizenship)) }},
+                    dual_citizenship_type: {{ Js::from(old('dual_citizenship_type', $submission->dual_citizenship_type)) }},
+                    dual_citizenship_country: {{ Js::from(old('dual_citizenship_country', $submission->dual_citizenship_country)) }},
                     height_m: {{ Js::from(old('height_m', $submission->height_m)) }},
                     weight_kg: {{ Js::from(old('weight_kg', $submission->weight_kg)) }},
                     blood_type: {{ Js::from(old('blood_type', $submission->blood_type)) }},
@@ -176,7 +178,7 @@
 
             <div class="flex flex-col md:flex-row gap-6">
                 <div class="w-full md:w-72 shrink-0 no-print">
-                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 sticky top-24 border border-white/20">
+                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-4 border border-white/20">
                         <h3 class="text-lg font-bold text-gray-900 mb-4 px-2" style="font-family: 'Poppins', sans-serif;">Form Sections</h3>
                         <nav class="space-y-1">
                             @foreach([
@@ -241,10 +243,70 @@
                                         <option>Single</option><option>Married</option><option>Widowed</option><option>Separated</option><option>Others</option>
                                     </select>
                                 </div>
-                                <div><label class="block text-sm font-medium">Citizenship</label>
-                                    <select name="citizenship" x-model="citizenship" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm">
-                                        <option>Filipino</option><option>Dual</option>
-                                    </select>
+                                <div class="col-span-3">
+                                    <label class="block text-sm font-medium mb-2">Citizenship</label>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center gap-6">
+                                            <!-- Filipino Checkbox -->
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" name="citizenship_filipino" value="Filipino" 
+                                                    :checked="citizenship === 'Filipino'" 
+                                                    @change="if($event.target.checked) { citizenship = 'Filipino'; dual_citizenship_type = ''; dual_citizenship_country = ''; } else { citizenship = ''; }"
+                                                    class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                                <span class="ml-2 text-sm font-medium text-gray-700">Filipino</span>
+                                            </label>
+                                            
+                                            <!-- Dual Citizenship Checkbox -->
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" name="citizenship_dual" value="Dual" 
+                                                    :checked="citizenship === 'Dual'" 
+                                                    @change="citizenship = $event.target.checked ? 'Dual' : 'Filipino'"
+                                                    class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                                <span class="ml-2 text-sm font-medium text-gray-700">Dual Citizenship</span>
+                                            </label>
+                                            <input type="hidden" name="citizenship" x-model="citizenship">
+                                        </div>
+                                        <!-- Dual Citizenship Details (shown when Dual is selected) -->
+                                        <div x-show="citizenship === 'Dual'" 
+                                             x-transition:enter="transition ease-out duration-200"
+                                             x-transition:enter-start="opacity-0 -translate-y-2"
+                                             x-transition:enter-end="opacity-100 translate-y-0"
+                                             x-cloak 
+                                             class="pl-6 space-y-3 border-l-2 border-purple-200">
+                                            
+                                            <!-- Type Checkboxes -->
+                                            <div class="flex items-center gap-6">
+                                                <!-- By Birth Checkbox -->
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" 
+                                                        :checked="dual_citizenship_type === 'By Birth'" 
+                                                        @change="dual_citizenship_type = $event.target.checked ? 'By Birth' : ''"
+                                                        class="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 focus:ring-2">
+                                                    <span class="ml-2 text-sm text-gray-600">By Birth</span>
+                                                </label>
+                                                
+                                                <!-- By Naturalization Checkbox -->
+                                                <label class="inline-flex items-center cursor-pointer">
+                                                    <input type="checkbox" 
+                                                        :checked="dual_citizenship_type === 'By Naturalization'" 
+                                                        @change="dual_citizenship_type = $event.target.checked ? 'By Naturalization' : ''"
+                                                        class="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 focus:ring-2">
+                                                    <span class="ml-2 text-sm text-gray-600">By Naturalization</span>
+                                                </label>
+                                                
+                                                <!-- Hidden input to send value to server -->
+                                                <input type="hidden" name="dual_citizenship_type" x-model="dual_citizenship_type">
+                                            </div>
+                                            
+                                            <!-- Country Input -->
+                                            <div class="flex items-center gap-2">
+                                                <label class="text-sm text-gray-600 whitespace-nowrap min-w-fit">Pls. indicate country:</label>
+                                                <input type="text" name="dual_citizenship_country" x-model="dual_citizenship_country"
+                                                    placeholder="Enter country"
+                                                    class="flex-1 max-w-xs rounded-md border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 sm:text-sm">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div><label class="block text-sm font-medium">Height (m)</label><input type="number" step="0.01" name="height_m" x-model="height_m" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"></div>

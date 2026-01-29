@@ -60,7 +60,7 @@
                         <label class="inline-flex items-center cursor-pointer">
                             <input type="checkbox" name="citizenship_filipino" value="Filipino" 
                                 :checked="citizenship === 'Filipino'" 
-                                @change="citizenship = $event.target.checked ? 'Filipino' : ''"
+                                @change="if($event.target.checked) { citizenship = 'Filipino'; dual_citizenship_type = ''; dual_citizenship_country = ''; } else { citizenship = ''; }"
                                 class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
                             <span class="ml-2 text-sm font-medium text-gray-700">Filipino</span>
                         </label>
