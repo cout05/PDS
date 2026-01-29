@@ -30,6 +30,14 @@ class PdsController extends Controller
         DB::beginTransaction();
 
         try {
+            // Handle Photo Upload
+            $photoPath = null;
+            if ($request->hasFile('photo_file')) {
+                $file = $request->file('photo_file');
+                $filename = time() . '_' . $file->getClientOriginalName();
+                $photoPath = $file->storeAs('photos', $filename, 'public');
+            }
+
             // 1. Personal Information
             $personalInfoId = DB::table('personal_information')->insertGetId($request->only([
                 'surname',
@@ -55,10 +63,13 @@ class PdsController extends Controller
                 'telephone_no',
                 'mobile_no',
                 'email',
-                'photo',
                 'created_at',
                 'updated_at'
-            ]) + ['created_at' => now(), 'updated_at' => now()]);
+            ]) + [
+                'photo' => $photoPath, // Store path instead of base64
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
 
             // Helper to sanitize array inputs
             $sanitize = function ($value) {

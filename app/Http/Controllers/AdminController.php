@@ -213,4 +213,16 @@ class AdminController extends Controller
         $submission->delete();
         return redirect()->route('admin.index')->with('success', 'PDS deleted successfully!');
     }
+
+    public function batchDelete(Request $request)
+    {
+        $ids = $request->input('ids');
+        if (empty($ids)) {
+            return back()->with('error', 'No items selected for deletion.');
+        }
+
+        PersonalInformation::whereIn('id', $ids)->delete();
+
+        return redirect()->route('admin.index')->with('success', 'Selected records deleted successfully!');
+    }
 }

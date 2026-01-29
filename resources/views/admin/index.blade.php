@@ -22,7 +22,45 @@
     </style>
 
 
-    <div class="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl overflow-hidden border border-white/20">
+    <div class="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl overflow-hidden border border-white/20" x-data="{ 
+            selected: [],
+            selectAll: false,
+            toggleAll() {
+                this.selectAll = !this.selectAll;
+                if (this.selectAll) {
+                    this.selected = Array.from(document.querySelectorAll('.row-checkbox')).map(cb => cb.value);
+                } else {
+                    this.selected = [];
+                }
+            },
+            toggleRow(id) {
+                id = id.toString();
+                if (this.selected.includes(id)) {
+                    this.selected = this.selected.filter(item => item !== id);
+                    this.selectAll = false;
+                } else {
+                    this.selected.push(id);
+                    if (this.selected.length === document.querySelectorAll('.row-checkbox').length) {
+                        this.selectAll = true;
+                    }
+                }
+            },
+            async submitBatchDelete() {
+                const result = await Swal.fire({
+                    title: 'Are you sure?',
+                    text: `You are about to delete ${this.selected.length} record(s). This action cannot be undone!`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#EF4444',
+                    cancelButtonColor: '#6B7280',
+                    confirmButtonText: 'Yes, delete selected!'
+                });
+
+                if (result.isConfirmed) {
+                    document.getElementById('batch-delete-form').submit();
+                }
+            }
+        }">
         <div class="px-8 py-6 bg-gradient-to-r from-purple-50 to-blue-50 border-b border-gray-200">
             <div class="flex justify-between items-center">
                 <div>
@@ -30,7 +68,30 @@
                     </h3>
                     <p class="mt-1 text-sm text-gray-600">Manage and review all submitted Personal Data Sheets</p>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-4">
+                    <div x-show="selected.length > 0" x-transition class="flex items-center gap-2">
+                        <span class="text-sm font-medium text-gray-600">
+                            <span x-text="selected.length"></span> item(s) selected
+                        </span>
+                        <button type="button" @click="submitBatchDelete"
+                            class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition-all font-medium text-sm">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                            Delete Selected
+                        </button>
+
+                        <form id="batch-delete-form" action="{{ route('admin.batch-delete') }}" method="POST"
+                            class="hidden">
+                            @csrf
+                            @method('DELETE')
+                            <template x-for="id in selected" :key="id">
+                                <input type="hidden" name="ids[]" :value="id">
+                            </template>
+                        </form>
+                    </div>
+
                     <span class="px-4 py-2 bg-white rounded-lg shadow-sm text-sm font-medium text-gray-700">
                         <span class="text-purple-600 font-bold">{{ $submissions->count() }}</span> of <span
                             class="text-purple-600 font-bold">{{ $submissions->total() }}</span>
@@ -44,6 +105,10 @@
             <table class="min-w-full divide-y divide-gray-200 modern-table">
                 <thead class="bg-gradient-to-r from-gray-50 to-gray-100">
                     <tr>
+                        <th class="px-6 py-4 text-left">
+                            <input type="checkbox" @click="toggleAll()" :checked="selectAll"
+                                class="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 cursor-pointer">
+                        </th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,14 +142,24 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-100">
                     @forelse($submissions as $pds)
-                        <tr class="hover:bg-purple-50/50">
+                        <tr class="hover:bg-purple-50/50" :class="selected.includes('{{ $pds->id }}') ? 'bg-purple-50/70' : ''">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <input type="checkbox" value="{{ $pds->id }}" :checked="selected.includes('{{ $pds->id }}')"
+                                    @click="toggleRow('{{ $pds->id }}')"
+                                    class="row-checkbox w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 cursor-pointer">
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
-                                        <div
-                                            class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white font-bold shadow-md">
-                                            {{ strtoupper(substr($pds->first_name, 0, 1)) }}{{ strtoupper(substr($pds->surname, 0, 1)) }}
-                                        </div>
+                                        @if($pds->photo)
+                                            <img src="{{ asset('storage/' . $pds->photo) }}"
+                                                class="h-10 w-10 rounded-full object-cover shadow-md">
+                                        @else
+                                            <div
+                                                class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center text-white font-bold shadow-md">
+                                                {{ strtoupper(substr($pds->first_name, 0, 1)) }}{{ strtoupper(substr($pds->surname, 0, 1)) }}
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-semibold text-gray-900">{{ $pds->surname }},
@@ -121,23 +196,23 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <form id="delete-form-{{ $pds->id }}" action="{{ route('admin.destroy', $pds->id) }}" method="POST" class="inline-block">
+                                    <form id="delete-form-{{ $pds->id }}" action="{{ route('admin.destroy', $pds->id) }}"
+                                        method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button"
-                                            onclick="Swal.fire({
-                                                title: 'Are you sure?',
-                                                text: 'This will permanently delete this submission.',
-                                                icon: 'warning',
-                                                showCancelButton: true,
-                                                confirmButtonColor: '#EF4444',
-                                                cancelButtonColor: '#6B7280',
-                                                confirmButtonText: 'Yes, delete it!'
-                                            }).then((result) => {
-                                                if (result.isConfirmed) {
-                                                    document.getElementById('delete-form-{{ $pds->id }}').submit();
-                                                }
-                                            })"
+                                        <button type="button" onclick="Swal.fire({
+                                                        title: 'Are you sure?',
+                                                        text: 'This will permanently delete this submission.',
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#EF4444',
+                                                        cancelButtonColor: '#6B7280',
+                                                        confirmButtonText: 'Yes, delete it!'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            document.getElementById('delete-form-{{ $pds->id }}').submit();
+                                                        }
+                                                    })"
                                             class="action-btn inline-flex items-center px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-all">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -151,7 +226,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="px-6 py-12 text-center">
+                            <td colspan="5" class="px-6 py-12 text-center">
                                 <div class="flex flex-col items-center justify-center">
                                     <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
