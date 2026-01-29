@@ -212,7 +212,7 @@
                 </div>
 
                 <div class="flex-1 bg-white/80 backdrop-blur-sm p-8 shadow-xl rounded-2xl border border-white/20 font-sans">
-                    <form action="{{ route('admin.update', $submission->id) }}" method="POST" novalidate>
+                    <form id="edit-pds-form" action="{{ route('admin.update', $submission->id) }}" method="POST" novalidate>
                         @csrf
                         @method('PUT')
 
@@ -838,7 +838,21 @@
                                 <button type="button" @click="next()" x-show="step < maxStep" class="px-6 py-2 bg-blue-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-blue-700">
                                     Next
                                 </button>
-                                <button type="submit" class="px-6 py-2 bg-green-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-green-700">
+                                <button type="button" 
+                                    onclick="Swal.fire({
+                                        title: 'Confirm Update?',
+                                        text: 'Are you sure you want to save the changes to this PDS?',
+                                        icon: 'question',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#059669',
+                                        cancelButtonColor: '#6B7280',
+                                        confirmButtonText: 'Yes, update now'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            document.getElementById('edit-pds-form').submit();
+                                        }
+                                    })"
+                                    class="px-6 py-2 bg-green-600 border border-transparent rounded-md text-sm font-medium text-white hover:bg-green-700">
                                     Update PDS
                                 </button>
                             </div>

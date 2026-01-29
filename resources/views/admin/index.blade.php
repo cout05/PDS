@@ -121,11 +121,23 @@
                                         </svg>
                                         Edit
                                     </a>
-                                    <form action="{{ route('admin.destroy', $pds->id) }}" method="POST" class="inline-block"
-                                        onsubmit="return confirm('Are you sure you want to delete this submission?')">
+                                    <form id="delete-form-{{ $pds->id }}" action="{{ route('admin.destroy', $pds->id) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"
+                                        <button type="button"
+                                            onclick="Swal.fire({
+                                                title: 'Are you sure?',
+                                                text: 'This will permanently delete this submission.',
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonColor: '#EF4444',
+                                                cancelButtonColor: '#6B7280',
+                                                confirmButtonText: 'Yes, delete it!'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    document.getElementById('delete-form-{{ $pds->id }}').submit();
+                                                }
+                                            })"
                                             class="action-btn inline-flex items-center px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-all">
                                             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

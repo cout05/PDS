@@ -15,6 +15,17 @@ class PdsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'surname' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
+            'email' => 'required|email|max:255',
+        ], [
+            'surname.required' => 'The surname is required.',
+            'first_name.required' => 'The first name is required.',
+            'date_of_birth.required' => 'Please provide your date of birth.',
+            'email.required' => 'A valid email address is required.',
+        ]);
 
         DB::beginTransaction();
 
